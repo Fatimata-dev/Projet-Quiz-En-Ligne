@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Projet_Quiz_En_Ligne.Repositories
 {
-    public class QuizQuestionRepository : IQuizQuestion
+    public class QuizQuestionRepository : IQuizQuestionRepository
     {
         private MyContext context;
 
@@ -18,9 +18,16 @@ namespace Projet_Quiz_En_Ligne.Repositories
 
         public void DeleteById(int id)
         {
-            QuizQuestion quizQuestion = context.QuizQuestions.SingleOrDefault(qz => qz.Id == id);
-            context.Entry(quizQuestion).State = EntityState.Deleted;
-            context.SaveChanges();
+            QuizQuestion quizQuestion = context.QuizQuestions.Find(id);
+            if (quizQuestion != null)
+            {
+                context.Entry(quizQuestion).State = EntityState.Deleted;
+                context.SaveChanges();
+            }
+            else
+            {
+                throw new Exception("Impossible de Supprimer");
+            }
         }
 
         public List<QuizQuestion> FindQuizzes()
@@ -40,18 +47,13 @@ namespace Projet_Quiz_En_Ligne.Repositories
             QuizQuestion quizQuestion = context.QuizQuestions.SingleOrDefault(q => q.Id == quizQ.Id);
             if (quizQuestion != null)
             {
-                quizQ.IsMultiple = quizQuestion.IsMultiple;
-                quizQ.NumOrder = quizQuestion.NumOrder;
-                quizQ.QstText = quizQuestion.QstText;
-                quizQ.Quiz = quizQuestion.Quiz;
-                quizQ.Reponses = new List<QuizReponse>();
-               
+                context.Entry(quizQuestion).State = EntityState.Modified;
+                context.SaveChanges();
             }
             else
             {
-                context.QuizQuestions.Add(quizQ);
+                throw new Exception("Impossible de modifier");
             }
-            context.SaveChanges();
         }
     }
 }

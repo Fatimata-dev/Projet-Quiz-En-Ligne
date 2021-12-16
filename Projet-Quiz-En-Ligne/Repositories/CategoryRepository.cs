@@ -12,9 +12,17 @@ namespace Projet_Quiz_En_Ligne.Repositories
         private MyContext context; 
         public void DeleteById(int id)
         {
-            QuizCategory quizCategory = context.QuizCategories.FirstOrDefault(qzc => qzc.Id == id);
-            context.Entry(quizCategory).State = EntityState.Deleted;
-            context.SaveChanges();
+            QuizCategory quizCategory = context.QuizCategories.Find(id);
+            if (quizCategory != null)
+            {
+                context.Entry(quizCategory).State = EntityState.Deleted;
+                context.SaveChanges();
+            }
+            else
+            {
+                throw new Exception("Impossible de supprimer");
+            }
+            
         }
 
         public List<QuizCategory> FindAll()
@@ -33,12 +41,12 @@ namespace Projet_Quiz_En_Ligne.Repositories
             QuizCategory quizCategory = context.QuizCategories.FirstOrDefault(qzc => qzc.Id == ctgr.Id);
             if (quizCategory != null)
             {
-                ctgr.Title =quizCategory.Title;
+                ctgr.Name =quizCategory.Name;
 
             }
             else
             {
-                context.QuizCategories.Add(ctgr);
+                throw new Exception("Impossible de Modifier");
             }
             context.SaveChanges();
         }

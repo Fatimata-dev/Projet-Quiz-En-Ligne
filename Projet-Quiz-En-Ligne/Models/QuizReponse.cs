@@ -15,7 +15,7 @@ namespace Projet_Quiz_En_Ligne.Models
 
         //ManyToOne
         [ForeignKey("QuestionId")]
-        public QuizQuestion Question { get; set; }
+        public virtual QuizQuestion Question { get; set; }
         public int? QuestionId { get; set; }
 
         public QuizReponse(string respText, bool isCorrect)

@@ -11,12 +11,12 @@ namespace Projet_Quiz_En_Ligne.Models
         {
         }
 
-        public virtual DbSet<Quiz> Quizzes { get; set; }
-        public virtual DbSet<QuizQuestion> QuizQuestions { get; set; }
-        public virtual DbSet<QuizReponse> QuizReponses { get; set; }
-        public virtual DbSet<QuizCategory> QuizCategories { get; set; }
-        public virtual DbSet<QuizTest> QuizTests { get; set; }
-        public virtual DbSet<User> Users { get; set; }
+        public  DbSet<Quiz> Quizzes { get; set; }
+        public  DbSet<QuizQuestion> QuizQuestions { get; set; }
+        public  DbSet<QuizReponse> QuizReponses { get; set; }
+        public  DbSet<QuizCategory> QuizCategories { get; set; }
+        public  DbSet<Resultat> Resultats { get; set; }
+        public  DbSet<User> Users { get; set; }
     }
 
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Projet_Quiz_En_Ligne.Repositories
 {
-    public interface IQuizQuestion
+    public interface IQuizQuestionRepository
     {
         List<QuizQuestion> FindQuizzes();
         void DeleteById(int id);

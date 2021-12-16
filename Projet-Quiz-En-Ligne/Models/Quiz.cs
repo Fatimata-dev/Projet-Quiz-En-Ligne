@@ -10,22 +10,20 @@ namespace Projet_Quiz_En_Ligne.Models
     {
         public int? Id { get; set; }
         public string Sujet { get; set; }
-        public List<QuizQuestion> Questions { get; set; }
+        public virtual List<QuizQuestion> Questions { get; set; }
 
-        
-        [ForeignKey("CategoryId")]
-        public QuizCategory Category { get; set; }
-        public int? CategoryId { get; set; }
+        public string Image { get; set; }
+        public string Category { get; set; }
 
-        public Quiz(string sujet, QuizCategory category)
+        public Quiz(string sujet)
         {
-            Category = category;
             Sujet = sujet;
             Questions = new List<QuizQuestion>();
         }
 
         public Quiz()
         {
+            Questions = new List<QuizQuestion>();
         }
     }
 }

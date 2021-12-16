@@ -10,15 +10,15 @@ namespace Projet_Quiz_En_Ligne.Repositories
     public class UserRepository : IUserRepository
     {
         private MyContext context;
-        //public void DeleteById(int id)
-        //{
-        //    User user = context.Users.SingleOrDefault(u => u.Id == id);
-        //    if (user != null)
-        //    {
-        //        context.Entry(user).State = EntityState.Deleted;
-        //        context.SaveChanges();
-        //    }
-        //}
+        public void Delete(int id)
+        {
+            User user = context.Users.SingleOrDefault(u => u.Id == id);
+            if (user != null)
+            {
+                context.Entry(user).State = EntityState.Deleted;
+                context.SaveChanges();
+            }
+        }
 
         public List<User> FindAll()
         {

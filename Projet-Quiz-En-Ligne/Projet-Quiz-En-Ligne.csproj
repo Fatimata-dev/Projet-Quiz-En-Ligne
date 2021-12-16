@@ -103,6 +103,10 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\QuizCategoriesController.cs" />
+    <Compile Include="Controllers\QuizQuestionsController.cs" />
+    <Compile Include="Controllers\QuizReponsesController.cs" />
+    <Compile Include="Controllers\QuizsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -118,18 +122,22 @@
     <Compile Include="Migrations\202112112014503_ConstructeurSansParams.Designer.cs">
       <DependentUpon>202112112014503_ConstructeurSansParams.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202112160832374_ModifModels.cs" />
+    <Compile Include="Migrations\202112160832374_ModifModels.Designer.cs">
+      <DependentUpon>202112160832374_ModifModels.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\MyContext.cs" />
     <Compile Include="Models\Quiz.cs" />
     <Compile Include="Models\QuizCategory.cs" />
     <Compile Include="Models\QuizQuestion.cs" />
     <Compile Include="Models\QuizReponse.cs" />
-    <Compile Include="Models\QuizTest.cs" />
+    <Compile Include="Models\Resultat.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\ICategoryRepository.cs" />
-    <Compile Include="Repositories\IQuizQuestion.cs" />
+    <Compile Include="Repositories\IQuizQuestionRepository.cs" />
     <Compile Include="Repositories\IQuizRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Repositories\QuizQuestionRepository.cs" />
@@ -141,6 +149,27 @@
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Quizs\Create.cshtml" />
+    <Content Include="Views\Quizs\Delete.cshtml" />
+    <Content Include="Views\Quizs\Details.cshtml" />
+    <Content Include="Views\Quizs\Edit.cshtml" />
+    <Content Include="Views\Quizs\Index.cshtml" />
+    <Content Include="Views\QuizQuestions\Create.cshtml" />
+    <Content Include="Views\QuizQuestions\Delete.cshtml" />
+    <Content Include="Views\QuizQuestions\Details.cshtml" />
+    <Content Include="Views\QuizQuestions\Edit.cshtml" />
+    <Content Include="Views\QuizQuestions\Index.cshtml" />
+    <Content Include="Views\QuizCategories\Create.cshtml" />
+    <Content Include="Views\QuizCategories\Delete.cshtml" />
+    <Content Include="Views\QuizCategories\Details.cshtml" />
+    <Content Include="Views\QuizCategories\Edit.cshtml" />
+    <Content Include="Views\QuizCategories\Index.cshtml" />
+    <Content Include="Views\QuizReponses\Create.cshtml" />
+    <Content Include="Views\QuizReponses\Delete.cshtml" />
+    <Content Include="Views\QuizReponses\Details.cshtml" />
+    <Content Include="Views\QuizReponses\Edit.cshtml" />
+    <Content Include="Views\QuizReponses\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -150,7 +179,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Home\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202112111819588_InitialModel.resx">
@@ -161,6 +190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202112112014503_ConstructeurSansParams.resx">
       <DependentUpon>202112112014503_ConstructeurSansParams.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112160832374_ModifModels.resx">
+      <DependentUpon>202112160832374_ModifModels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

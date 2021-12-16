@@ -11,12 +11,23 @@ namespace Projet_Quiz_En_Ligne.Repositories
     {
         private MyContext context;
 
+        public QuizRepository(MyContext context)
+        {
+            this.context = context;
+        }
 
         public void DeleteById(int id)
         {
-            Quiz qz = context.Quizzes.SingleOrDefault(q => q.Id == id);
-            context.Entry(qz).State = EntityState.Deleted;
-            context.SaveChanges();
+            Quiz qz = context.Quizzes.Find(id);
+            if (qz != null)
+            {
+                context.Entry(qz).State = EntityState.Deleted;
+                context.SaveChanges();
+            }
+            else
+            {
+                throw new Exception("Impossible de supprimer");
+            }
         }
 
         public QuizQuestion FindQuestion(int quizId, int numOrder)
@@ -26,7 +37,6 @@ namespace Projet_Quiz_En_Ligne.Repositories
 
         public List<Quiz> FindQuizzes()
         {
-            //Avec le Include on peut faire la jointure et recuperer les valeurs de db.Quizzes.Include(...)
             return context.Quizzes.AsNoTracking().ToList();
         }
 
@@ -49,17 +59,16 @@ namespace Projet_Quiz_En_Ligne.Repositories
         public void Update(Quiz quiz)
         {
             Quiz qz = context.Quizzes.SingleOrDefault(q => q.Id == quiz.Id);
-            if (qz == null)
+            if (qz != null)
             {
-                context.Quizzes.Add(quiz);
+                context.Entry(qz).State = EntityState.Modified;
+                context.SaveChanges();
             }
             else
             {
-                quiz.Category = qz.Category;
-                quiz.Questions = new List<QuizQuestion>();
+                throw new Exception("Impossible de modifier");
                 
             }
-            context.SaveChanges();
         }
     }
 }

@@ -11,5 +11,6 @@ namespace Projet_Quiz_En_Ligne.Repositories
     {
         List<User> FindAll();
         void Insert(User user);
+        void Delete(int id);
     }
 }

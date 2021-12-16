@@ -13,10 +13,10 @@ namespace Projet_Quiz_En_Ligne.Models
         public bool IsMultiple { get; set; }
         public int NumOrder { get; set; }
         [ForeignKey("QuizId")]
-        public Quiz Quiz { get; set; }
+        public virtual Quiz Quiz { get; set; }
         public int? QuizId { get; set; }
 
-        public List<QuizReponse> Reponses { get; set; }
+        public virtual List<QuizReponse> Reponses { get; set; }
         public QuizQuestion(string qstText, bool isMultiple, int numOrder)
         {
             QstText = qstText;
@@ -27,6 +27,7 @@ namespace Projet_Quiz_En_Ligne.Models
 
         public QuizQuestion()
         {
+            Reponses = new List<QuizReponse>();
         }
     }
 }

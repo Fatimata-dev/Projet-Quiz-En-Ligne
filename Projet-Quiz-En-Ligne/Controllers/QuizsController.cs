@@ -7,27 +7,27 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Projet_Quiz_En_Ligne.Models;
+using Projet_Quiz_En_Ligne.Repositories;
+using Projet_Quiz_En_Ligne.Services;
 
 namespace Projet_Quiz_En_Ligne.Controllers
 {
     public class QuizsController : Controller
     {
-        private MyContext db = new MyContext();
+        private QuizService db = new QuizService(new QuizRepository(new MyContext()));
 
         // GET: Quizs
         public ActionResult Index()
         {
-            return View(db.Quizzes.ToList());
+           List<Quiz> quiz = db.FindAll();
+            return View(quiz);
         }
 
         // GET: Quizs/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Quiz quiz = db.Quizzes.Find(id);
+            Quiz quiz = db.FindById(id);
+            
             if (quiz == null)
             {
                 return HttpNotFound();
@@ -38,20 +38,17 @@ namespace Projet_Quiz_En_Ligne.Controllers
         // GET: Quizs/Create
         public ActionResult Create()
         {
-            return View();
+            return View(new Quiz());
         }
 
         // POST: Quizs/Create
-        // Pour vous protéger des attaques par survalidation, activez les propriétés spécifiques auxquelles vous souhaitez vous lier. Pour 
-        // plus de détails, consultez https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Sujet,Image,Category")] Quiz quiz)
+        public ActionResult Create(Quiz quiz)
         {
             if (ModelState.IsValid)
             {
-                db.Quizzes.Add(quiz);
-                db.SaveChanges();
+                db.Insert(quiz);
                 return RedirectToAction("Index");
             }
 
@@ -59,44 +56,30 @@ namespace Projet_Quiz_En_Ligne.Controllers
         }
 
         // GET: Quizs/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Quiz quiz = db.Quizzes.Find(id);
+            Quiz quiz = db.FindById(id);
             if (quiz == null)
             {
                 return HttpNotFound();
             }
             return View(quiz);
-        }
-
-        // POST: Quizs/Edit/5
-        // Pour vous protéger des attaques par survalidation, activez les propriétés spécifiques auxquelles vous souhaitez vous lier. Pour 
-        // plus de détails, consultez https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        } [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Sujet,Image,Category")] Quiz quiz)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(quiz).State = EntityState.Modified;
-                db.SaveChanges();
+                db.Update(quiz);
                 return RedirectToAction("Index");
             }
             return View(quiz);
         }
 
         // GET: Quizs/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Quiz quiz = db.Quizzes.Find(id);
+            Quiz quiz = db.FindById(id);
             if (quiz == null)
             {
                 return HttpNotFound();
@@ -109,19 +92,17 @@ namespace Projet_Quiz_En_Ligne.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Quiz quiz = db.Quizzes.Find(id);
-            db.Quizzes.Remove(quiz);
-            db.SaveChanges();
+            db.DeleteById(id);
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        db.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
     }
 }

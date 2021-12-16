@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Projet_Quiz_En_Ligne.Repositories
 {
-    interface ICategoryRepository
+    public interface ICategoryRepository
     {
         List<QuizCategory> FindAll();
         void Update(QuizCategory ctgr);
-
         void DeleteById(int id);
+        QuizCategory FindById(int id);
 
         void Insert(QuizCategory ctgr);
     }

@@ -9,7 +9,13 @@ namespace Projet_Quiz_En_Ligne.Repositories
 {
     public class CategoryRepository : ICategoryRepository
     {
-        private MyContext context; 
+        private MyContext context;
+
+        public CategoryRepository(MyContext context)
+        {
+            this.context = context;
+        }
+
         public void DeleteById(int id)
         {
             QuizCategory quizCategory = context.QuizCategories.Find(id);
@@ -28,6 +34,11 @@ namespace Projet_Quiz_En_Ligne.Repositories
         public List<QuizCategory> FindAll()
         {
             return context.QuizCategories.AsNoTracking().ToList();
+        }
+
+        public QuizCategory FindById(int id)
+        {
+            return context.QuizCategories.Find(id);
         }
 
         public void Insert(QuizCategory ctgr)

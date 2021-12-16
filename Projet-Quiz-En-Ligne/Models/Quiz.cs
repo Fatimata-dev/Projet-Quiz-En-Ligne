@@ -15,8 +15,9 @@ namespace Projet_Quiz_En_Ligne.Models
         public string Image { get; set; }
         public string Category { get; set; }
 
-        public Quiz(string sujet)
+        public Quiz(string sujet,string category)
         {
+            Category = category;
             Sujet = sujet;
             Questions = new List<QuizQuestion>();
         }

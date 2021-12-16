@@ -10,6 +10,7 @@ namespace Projet_Quiz_En_Ligne.Repositories
     public interface IQuizQuestionRepository
     {
         List<QuizQuestion> FindQuizzes();
+        QuizQuestion FindById(int id);
         void DeleteById(int id);
         void Update(QuizQuestion quizQ);
         void Insert(QuizQuestion quizQ);

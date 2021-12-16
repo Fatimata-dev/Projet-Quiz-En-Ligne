@@ -7,27 +7,26 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Projet_Quiz_En_Ligne.Models;
+using Projet_Quiz_En_Ligne.Repositories;
+using Projet_Quiz_En_Ligne.Services;
 
 namespace Projet_Quiz_En_Ligne.Controllers
 {
     public class QuizCategoriesController : Controller
     {
-        private MyContext db = new MyContext();
+        private CategoryService db = new CategoryService(new CategoryRepository(new MyContext()));
 
         // GET: QuizCategories
         public ActionResult Index()
         {
-            return View(db.QuizCategories.ToList());
+            List<QuizCategory> categories = db.FindAll();
+            return View(categories);
         }
 
         // GET: QuizCategories/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            QuizCategory quizCategory = db.QuizCategories.Find(id);
+            QuizCategory quizCategory = db.FindById(id);
             if (quizCategory == null)
             {
                 return HttpNotFound();
@@ -38,20 +37,16 @@ namespace Projet_Quiz_En_Ligne.Controllers
         // GET: QuizCategories/Create
         public ActionResult Create()
         {
-            return View();
+            return View(new QuizCategory() );
         }
 
-        // POST: QuizCategories/Create
-        // Pour vous protéger des attaques par survalidation, activez les propriétés spécifiques auxquelles vous souhaitez vous lier. Pour 
-        // plus de détails, consultez https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name")] QuizCategory quizCategory)
         {
             if (ModelState.IsValid)
             {
-                db.QuizCategories.Add(quizCategory);
-                db.SaveChanges();
+                db.Insert(quizCategory);
                 return RedirectToAction("Index");
             }
 
@@ -59,13 +54,9 @@ namespace Projet_Quiz_En_Ligne.Controllers
         }
 
         // GET: QuizCategories/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            QuizCategory quizCategory = db.QuizCategories.Find(id);
+            QuizCategory quizCategory = db.FindById(id);
             if (quizCategory == null)
             {
                 return HttpNotFound();
@@ -73,30 +64,22 @@ namespace Projet_Quiz_En_Ligne.Controllers
             return View(quizCategory);
         }
 
-        // POST: QuizCategories/Edit/5
-        // Pour vous protéger des attaques par survalidation, activez les propriétés spécifiques auxquelles vous souhaitez vous lier. Pour 
-        // plus de détails, consultez https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name")] QuizCategory quizCategory)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(quizCategory).State = EntityState.Modified;
-                db.SaveChanges();
+                db.Update(quizCategory);
                 return RedirectToAction("Index");
             }
             return View(quizCategory);
         }
 
         // GET: QuizCategories/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            QuizCategory quizCategory = db.QuizCategories.Find(id);
+            QuizCategory quizCategory = db.FindById(id);
             if (quizCategory == null)
             {
                 return HttpNotFound();
@@ -109,19 +92,17 @@ namespace Projet_Quiz_En_Ligne.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            QuizCategory quizCategory = db.QuizCategories.Find(id);
-            db.QuizCategories.Remove(quizCategory);
-            db.SaveChanges();
+            db.DeleteById(id);
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        db.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
     }
 }

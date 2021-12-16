@@ -12,6 +12,7 @@ namespace Projet_Quiz_En_Ligne.Models
         public string QstText { get; set; }
         public bool IsMultiple { get; set; }
         public int NumOrder { get; set; }
+
         [ForeignKey("QuizId")]
         public virtual Quiz Quiz { get; set; }
         public int? QuizId { get; set; }

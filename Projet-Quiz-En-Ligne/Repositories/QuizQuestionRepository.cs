@@ -18,16 +18,21 @@ namespace Projet_Quiz_En_Ligne.Repositories
 
         public void DeleteById(int id)
         {
-            QuizQuestion quizQuestion = context.QuizQuestions.Find(id);
-            if (quizQuestion != null)
+            QuizQuestion question = context.QuizQuestions.Find(id);
+            if (question != null)
             {
-                context.Entry(quizQuestion).State = EntityState.Deleted;
+                context.QuizQuestions.Remove(question);
                 context.SaveChanges();
             }
             else
             {
                 throw new Exception("Impossible de Supprimer");
             }
+        }
+
+        public QuizQuestion FindById(int id)
+        {
+            return context.QuizQuestions.Find(id);
         }
 
         public List<QuizQuestion> FindQuizzes()
@@ -44,10 +49,9 @@ namespace Projet_Quiz_En_Ligne.Repositories
 
         public void Update(QuizQuestion quizQ)
         {
-            QuizQuestion quizQuestion = context.QuizQuestions.SingleOrDefault(q => q.Id == quizQ.Id);
-            if (quizQuestion != null)
+            if (quizQ != null)
             {
-                context.Entry(quizQuestion).State = EntityState.Modified;
+                context.Entry(quizQ).State = EntityState.Modified;
                 context.SaveChanges();
             }
             else

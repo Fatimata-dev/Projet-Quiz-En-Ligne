@@ -7,28 +7,27 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Projet_Quiz_En_Ligne.Models;
+using Projet_Quiz_En_Ligne.Repositories;
+using Projet_Quiz_En_Ligne.Services;
 
 namespace Projet_Quiz_En_Ligne.Controllers
 {
     public class QuizReponsesController : Controller
     {
-        private MyContext db = new MyContext();
+        private ReponseService db = new ReponseService(new ReponseRepository(new MyContext()));
 
         // GET: QuizReponses
         public ActionResult Index()
         {
-            var quizReponses = db.QuizReponses.Include(q => q.Question);
-            return View(quizReponses.ToList());
+            //.Include(q => q.Question)
+            var quizReponses = db.FindAll();
+            return View(quizReponses);
         }
 
         // GET: QuizReponses/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            QuizReponse quizReponse = db.QuizReponses.Find(id);
+            QuizReponse quizReponse = db.GetById(id);
             if (quizReponse == null)
             {
                 return HttpNotFound();
@@ -39,69 +38,53 @@ namespace Projet_Quiz_En_Ligne.Controllers
         // GET: QuizReponses/Create
         public ActionResult Create()
         {
-            ViewBag.QuestionId = new SelectList(db.QuizQuestions, "Id", "QstText");
+            ViewBag.QuestionId = new SelectList(db.FindAll(), "Id", "QstText");
             return View();
         }
 
-        // POST: QuizReponses/Create
-        // Pour vous protéger des attaques par survalidation, activez les propriétés spécifiques auxquelles vous souhaitez vous lier. Pour 
-        // plus de détails, consultez https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,RespText,IsCorrect,QuestionId")] QuizReponse quizReponse)
         {
             if (ModelState.IsValid)
             {
-                db.QuizReponses.Add(quizReponse);
-                db.SaveChanges();
+                db.Insert(quizReponse);
                 return RedirectToAction("Index");
             }
 
-            ViewBag.QuestionId = new SelectList(db.QuizQuestions, "Id", "QstText", quizReponse.QuestionId);
+            ViewBag.QuestionId = new SelectList(db.FindAll(), "Id", "QstText", quizReponse.QuestionId);
             return View(quizReponse);
         }
 
         // GET: QuizReponses/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            QuizReponse quizReponse = db.QuizReponses.Find(id);
+            QuizReponse quizReponse = db.GetById(id);
             if (quizReponse == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.QuestionId = new SelectList(db.QuizQuestions, "Id", "QstText", quizReponse.QuestionId);
+            ViewBag.QuestionId = new SelectList(db.FindAll(), "Id", "QstText", quizReponse.QuestionId);
             return View(quizReponse);
         }
 
-        // POST: QuizReponses/Edit/5
-        // Pour vous protéger des attaques par survalidation, activez les propriétés spécifiques auxquelles vous souhaitez vous lier. Pour 
-        // plus de détails, consultez https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,RespText,IsCorrect,QuestionId")] QuizReponse quizReponse)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(quizReponse).State = EntityState.Modified;
-                db.SaveChanges();
+                db.Update(quizReponse);
                 return RedirectToAction("Index");
             }
-            ViewBag.QuestionId = new SelectList(db.QuizQuestions, "Id", "QstText", quizReponse.QuestionId);
+            ViewBag.QuestionId = new SelectList(db.FindAll(), "Id", "QstText", quizReponse.QuestionId);
             return View(quizReponse);
         }
 
         // GET: QuizReponses/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            QuizReponse quizReponse = db.QuizReponses.Find(id);
+            QuizReponse quizReponse = db.GetById(id);
             if (quizReponse == null)
             {
                 return HttpNotFound();
@@ -114,19 +97,17 @@ namespace Projet_Quiz_En_Ligne.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            QuizReponse quizReponse = db.QuizReponses.Find(id);
-            db.QuizReponses.Remove(quizReponse);
-            db.SaveChanges();
+            db.Delete(id);
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        db.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
     }
 }

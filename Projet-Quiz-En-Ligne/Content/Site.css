@@ -16,3 +16,9 @@ textarea {
     max-width: 280px;
 }
 
+.navbar-header{
+    padding: 30px;
+    background: grey;
+    
+}
+

@@ -1,0 +1,50 @@
+﻿
+
+@model Projet_Quiz_En_Ligne.Models.EmailModel
+
+@{
+    ViewBag.Title = "Contact";
+}
+
+
+@using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <form class="fields" id="#contact">
+        <div class="field half">
+            To
+
+            @Html.TextBoxFor(model => model.To, htmlAttributes: new { @class = "form-control" })
+        </div>
+
+        <div class="field half">
+            Subject:
+
+            @Html.TextBoxFor(model => model.Subject, htmlAttributes: new { @class = "form-control" })
+
+        </div>
+        <div class="field half">
+
+
+            Body:
+            @Html.TextAreaFor(model => model.Body, new { row = "3", cols = "20", @class = "form-control" })
+
+        </div>
+        <div class="field half">
+            Adresse Gmail:
+
+            @Html.TextBoxFor(model => model.Email, htmlAttributes: new { @class = "form-control" })
+
+        </div>
+        <div class="field half">
+            Password:
+
+            @Html.TextBoxFor(model => model.Password, new { type = "password", @class = "form-control" })
+
+        </div>
+
+
+        <input type="submit" value="Envoyer" class="btn btn-danger" />
+    </form>
+
+}

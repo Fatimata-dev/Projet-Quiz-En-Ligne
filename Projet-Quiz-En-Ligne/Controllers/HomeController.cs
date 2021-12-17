@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Projet_Quiz_En_Ligne.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 
@@ -12,6 +15,35 @@ namespace Projet_Quiz_En_Ligne.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+        // public ActionResult Contact()
+        //{
+        //    return View();
+        //}
+        [HttpPost]
+        public ActionResult Index(EmailModel model)
+        {
+            using (MailMessage mm = new MailMessage(model.Email, model.To))
+            {
+                mm.Subject = model.Subject;
+                mm.Body = model.Body;
+
+                mm.IsBodyHtml = false;
+                using (SmtpClient smtp = new SmtpClient())
+                {
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.EnableSsl = true;
+                    NetworkCredential cred = new NetworkCredential(model.Email, model.Password);
+                    smtp.UseDefaultCredentials = true;
+                    smtp.Credentials = cred;
+                    smtp.Port = 587;
+                    smtp.Send(mm);
+                    ViewBag.message = "Message envoyé";
+
+                }
+            }
+            return View();
+
         }
     }
 }

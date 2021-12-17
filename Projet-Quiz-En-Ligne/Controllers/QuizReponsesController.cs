@@ -19,7 +19,6 @@ namespace Projet_Quiz_En_Ligne.Controllers
         // GET: QuizReponses
         public ActionResult Index()
         {
-            //.Include(q => q.Question)
             var quizReponses = db.FindAll();
             return View(quizReponses);
         }
@@ -100,14 +99,5 @@ namespace Projet_Quiz_En_Ligne.Controllers
             db.Delete(id);
             return RedirectToAction("Index");
         }
-
-        //protected override void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        db.Dispose();
-        //    }
-        //    base.Dispose(disposing);
-        //}
     }
 }

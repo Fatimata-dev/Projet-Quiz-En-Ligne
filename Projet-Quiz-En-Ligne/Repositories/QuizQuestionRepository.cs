@@ -38,7 +38,6 @@ namespace Projet_Quiz_En_Ligne.Repositories
         public List<QuizQuestion> FindQuizzes()
         {
             return context.QuizQuestions.Include(qzq => qzq.Reponses).AsNoTracking().ToList();
-            context.SaveChanges();
         }
 
         public void Insert(QuizQuestion quizQ)

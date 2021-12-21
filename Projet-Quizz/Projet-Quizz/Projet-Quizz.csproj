@@ -103,7 +103,7 @@
   <ItemGroup>
     <Content Include="Content\css\fontawesome-all.min.css" />
     <Content Include="Content\css\images\CSS.PNG" />
-    <Content Include="Content\css\images\Html.PNG" />
+    <Content Include="Content\css\images\html-5.png" />
     <Content Include="Content\css\images\intro.svg" />
     <Content Include="Content\css\images\JS.PNG" />
     <Content Include="Content\css\main.css" />

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -9,24 +10,26 @@ using System.Web.Mvc;
 using Projet_Quiz_En_Ligne.Models;
 using Projet_Quiz_En_Ligne.Repositories;
 using Projet_Quiz_En_Ligne.Services;
+using Projet_Quiz_En_Ligne.ViewModel;
 
 namespace Projet_Quiz_En_Ligne.Controllers
 {
     public class QuizsController : Controller
     {
-        private QuizService db = new QuizService(new QuizRepository(new MyContext()));
+        private QuizService quizService = new QuizService(new QuizRepository(new MyContext()));
+        private CategoryService category = new CategoryService(new CategoryRepository(new MyContext()));
 
         // GET: Quizs
         public ActionResult Index()
         {
-           List<Quiz> quiz = db.FindAll();
+           List<Quiz> quiz = quizService.FindAll();
             return View(quiz);
         }
 
         // GET: Quizs/Details/5
         public ActionResult Details(int id)
         {
-            Quiz quiz = db.FindById(id);
+            Quiz quiz = quizService.FindById(id);
             
             if (quiz == null)
             {
@@ -36,19 +39,25 @@ namespace Projet_Quiz_En_Ligne.Controllers
         }
 
         // GET: Quizs/Create
+
         public ActionResult Create()
         {
-            return View(new Quiz());
+            QuizCategoryViewModel model = new QuizCategoryViewModel();
+            model.Quiz = new Quiz();
+            model.Categories = category.FindAll();
+            return View(model);
         }
 
         // POST: Quizs/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Quiz quiz)
+        public ActionResult Create([Bind(Include = "Id,Sujet,Category,Image")] Quiz quiz, HttpPostedFileBase Image)
         {
             if (ModelState.IsValid)
             {
-                db.Insert(quiz);
+                quiz.Image = (quiz.Sujet) + Path.GetExtension(Image.FileName);
+                Image.SaveAs(Server.MapPath("~/Content/Images/") + quiz.Image);
+                quizService.Insert(quiz);
                 return RedirectToAction("Index");
             }
 
@@ -56,30 +65,53 @@ namespace Projet_Quiz_En_Ligne.Controllers
         }
 
         // GET: Quizs/Edit/5
-        public ActionResult Edit(int id)
-        {
-            Quiz quiz = db.FindById(id);
+        public ActionResult Edit(int id )
+        {   
+            Quiz quiz = quizService.FindById(id);
             if (quiz == null)
             {
                 return HttpNotFound();
             }
-            return View(quiz);
-        } [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Sujet,Image,Category")] Quiz quiz)
-        {
-            if (ModelState.IsValid)
+            else
             {
-                db.Update(quiz);
+                QuizCategoryViewModel model = new QuizCategoryViewModel();
+                model.Quiz = quiz;
+                Session["Image"] = quiz.Image; 
+                model.Categories = category.FindAll();
+                return View(model);
+            }
+            
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Quiz quiz , HttpPostedFileBase Image)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(quiz);
+
+            }
+            else
+            {
+                if (Image != null)
+                {
+                    quiz.Image = quiz.Sujet + Path.GetExtension(Image.FileName);
+                    Image.SaveAs(Server.MapPath("~/Content/Images/") + quiz.Image);
+                }
+                else
+                {
+                    quiz.Image = (string)Session["Image"];
+                }
+                quizService.Update(quiz);
                 return RedirectToAction("Index");
             }
-            return View(quiz);
+            
         }
 
         // GET: Quizs/Delete/5
         public ActionResult Delete(int id)
         {
-            Quiz quiz = db.FindById(id);
+            Quiz quiz = quizService.FindById(id);
             if (quiz == null)
             {
                 return HttpNotFound();
@@ -92,7 +124,7 @@ namespace Projet_Quiz_En_Ligne.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            db.DeleteById(id);
+            quizService.DeleteById(id);
             return RedirectToAction("Index");
         }
 

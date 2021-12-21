@@ -18,7 +18,7 @@ namespace Projet_Quiz_En_Ligne.Repositories
 
         public void DeleteById(int id)
         {
-            QuizCategory quizCategory = context.QuizCategories.Find(id);
+            Category quizCategory = context.Categories.Find(id);
             if (quizCategory != null)
             {
                 context.Entry(quizCategory).State = EntityState.Deleted;
@@ -31,25 +31,25 @@ namespace Projet_Quiz_En_Ligne.Repositories
             
         }
 
-        public List<QuizCategory> FindAll()
+        public List<Category> FindAll()
         {
-            return context.QuizCategories.AsNoTracking().ToList();
+            return context.Categories.AsNoTracking().ToList();
         }
 
-        public QuizCategory FindById(int id)
+        public Category FindById(int id)
         {
-            return context.QuizCategories.Find(id);
+            return context.Categories.Find(id);
         }
 
-        public void Insert(QuizCategory ctgr)
+        public void Insert(Category ctgr)
         {
-            context.QuizCategories.Add(ctgr);
+            context.Categories.Add(ctgr);
             context.SaveChanges();
         }
 
-        public void Update(QuizCategory ctgr)
+        public void Update(Category ctgr)
         {
-            QuizCategory quizCategory = context.QuizCategories.FirstOrDefault(qzc => qzc.Id == ctgr.Id);
+            Category quizCategory = context.Categories.FirstOrDefault(qzc => qzc.Id == ctgr.Id);
             if (quizCategory != null)
             {
                 ctgr.Name =quizCategory.Name;

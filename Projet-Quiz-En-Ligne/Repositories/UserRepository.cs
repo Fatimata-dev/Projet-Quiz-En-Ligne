@@ -1,4 +1,4 @@
-﻿using Projet_Quiz_En_Ligne.Models;
+﻿    using Projet_Quiz_En_Ligne.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -10,6 +10,12 @@ namespace Projet_Quiz_En_Ligne.Repositories
     public class UserRepository : IUserRepository
     {
         private MyContext context;
+
+        public UserRepository(MyContext context)
+        {
+            this.context = context;
+        }
+
         public void Delete(int id)
         {
             User user = context.Users.SingleOrDefault(u => u.Id == id);

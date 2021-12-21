@@ -8,9 +8,9 @@ namespace Projet_Quiz_En_Ligne.Models
 {
     public class Quiz
     {
-        public int? Id { get; set; }
+        public int Id { get; set; }
         public string Sujet { get; set; }
-        public virtual List<QuizQuestion> Questions { get; set; }
+        public virtual List<Question> Questions { get; set; }
 
         public string Image { get; set; }
         public string Category { get; set; }
@@ -19,12 +19,12 @@ namespace Projet_Quiz_En_Ligne.Models
         {
             Category = category;
             Sujet = sujet;
-            Questions = new List<QuizQuestion>();
+            Questions = new List<Question>();
         }
 
         public Quiz()
         {
-            Questions = new List<QuizQuestion>();
+            Questions = new List<Question>();
         }
     }
 }

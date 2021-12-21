@@ -11,9 +11,10 @@ namespace Projet_Quiz_En_Ligne.Services
     public interface IQuizService 
     {
         List<Quiz> FindAll();
-        QuizQuestion FindQuestion(int quizId, int numOrder);
-        List<QuizReponse> FindResponses(int questionId);
-        QuizReponse FindResponseById(int responseId);
+        Question FindQuestion(int quizId, int numOrder);
+        List<Quiz> FindByCat(string category);
+        List<Reponse> FindResponses(int questionId);
+        Reponse FindResponseById(int responseId);
         Quiz FindById(int id);
         void DeleteById(int id);
         void Update(Quiz quiz);

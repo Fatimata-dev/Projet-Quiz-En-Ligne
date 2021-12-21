@@ -1,0 +1,59 @@
+﻿@model Projet_Quiz_En_Ligne.Models.Question
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Vous êtes sur?</h3>
+<div>
+    <h4>Question</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Quiz.Sujet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quiz.Sujet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QstText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QstText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsMultiple)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsMultiple)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumOrder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumOrder)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="user-data__footer">
+            <input type="submit" value="Delete" class="au-btn au-btn-load" /> |
+            <button class="au-btn au-btn-load">@Html.ActionLink("Retour", "Index")</button>
+        </div>
+
+    }
+</div>

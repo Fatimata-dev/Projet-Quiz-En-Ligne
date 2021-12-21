@@ -10,7 +10,6 @@ namespace Projet_Quiz_En_Ligne.Repositories
     public class QuizRepository : IQuizRepository
     {
         private MyContext context;
-
         public QuizRepository(MyContext context)
         {
             this.context = context;
@@ -30,15 +29,20 @@ namespace Projet_Quiz_En_Ligne.Repositories
             }
         }
 
+        public List<Quiz> FindByCat(string category)
+        {
+            return context.Quizzes.AsNoTracking().Where(q => q.Category == category).ToList();
+        }
+
         public Quiz FindById(int id)
         {
-            return context.Quizzes.Find(id);
+            return context.Quizzes.FirstOrDefault(q => q.Id == id);
             
         }
 
-        public QuizQuestion FindQuestion(int quizId, int numOrder)
+        public Question FindQuestion(int quizId, int numOrder)
         {
-            return context.QuizQuestions.AsNoTracking().SingleOrDefault(qst => qst.QuizId == quizId && qst.NumOrder == numOrder);
+            return context.Questions.AsNoTracking().SingleOrDefault(qst => qst.QuizId == quizId && qst.NumOrder == numOrder);
         }
 
         public List<Quiz> FindQuizzes()
@@ -46,14 +50,14 @@ namespace Projet_Quiz_En_Ligne.Repositories
             return context.Quizzes.AsNoTracking().ToList();
         }
 
-        public QuizReponse FindResponseById(int responseId)
+        public Reponse FindResponseById(int responseId)
         {
-            return context.QuizReponses.Find(responseId);
+            return context.Reponses.FirstOrDefault(r => r.Id == responseId);
         }
 
-        public List<QuizReponse> FindResponses(int questionId)
+        public List<Reponse> FindResponses(int questionId)
         {
-            return context.QuizReponses.AsNoTracking().Where(r => r.QuestionId == questionId).ToList();
+            return context.Reponses.AsNoTracking().Where(r => r.QuestionId == questionId).ToList();
         }
 
         public void Insert(Quiz quiz)
@@ -64,17 +68,18 @@ namespace Projet_Quiz_En_Ligne.Repositories
 
         public void Update(Quiz quiz)
         {
-            //Quiz quiz1 = context.Quizzes.SingleOrDefault(q => q.Id == quiz.Id);
-            if (quiz != null)
-            {
-                context.Entry(quiz).State = EntityState.Modified;
-                context.SaveChanges();
-            }
-            else
-            {
-                throw new Exception("Impossible de modifier");
+            //Quiz q = context.Quizzes.FirstOrDefault(qz => qz.Id == quiz.Id);
+            //if (q != null)
+            //{
+            context.Quizzes.Attach(quiz);
+               context.Entry(quiz).State = EntityState.Modified;
+               context.SaveChanges();
+            //}
+            //else
+            //{
+            //    throw new Exception("Impossible de modifier");
                 
-            }
+            //}
         }
     }
 }

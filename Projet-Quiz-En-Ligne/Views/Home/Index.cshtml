@@ -1,7 +1,35 @@
-﻿
+﻿@model Projet_Quiz_En_Ligne.ViewModel.ListQuizsCategoriesViewModel
+
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Quizs</h2>
+<div class="col-md-2">
+    <h4>Catégories</h4>
+    <div class="list-group">
+        @Html.ActionLink("Toutes", "Index", null, new { @class = Request["Category"] == null ? "list-group-item active" : "list-group-item" })
+        @foreach (var cat in Model.Categories)
+        {
+            @Html.ActionLink(cat.Name, "Index", new { Category = cat.Name }, new { @class = Request["Category"] == cat.Name ? "list-group-item active" : "list-group-item" })
+        }
+    </div>
+</div>
+
+<div class="col-md-10">
+    @foreach (var qz in Model.Quizs)
+    {
+        <div class="col-md-4" style="height:300px;padding:10px;margin:10px;border:solid thin solid">
+            <div class="col-md-12">
+                <img style="height:150px" src="~/Content/Images/@qz.Image" />
+            </div>
+            <div class="col-md-12">
+                <p>@qz.Sujet</p>
+            </div>
+            <div class="col-md-12">
+                <p><a href="/Home/Demarrer/@qz.Id">Démarrer</a></p>
+            </div>
+        </div>
+    }
+</div>
 

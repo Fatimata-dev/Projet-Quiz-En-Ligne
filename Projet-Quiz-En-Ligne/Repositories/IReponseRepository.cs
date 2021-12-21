@@ -9,10 +9,10 @@ namespace Projet_Quiz_En_Ligne.Repositories
 {
     public interface IReponseRepository
     {
-        List<QuizReponse> FindAll();
-        void Update(QuizReponse rep);
-        QuizReponse GetById(int id);
+        List<Reponse> FindAll();
+        void Update(Reponse rep);
+        Reponse GetById(int id);
         void DeleteById(int id);
-        void Insert(QuizReponse rep);
+        void Insert(Reponse rep);
     }
 }

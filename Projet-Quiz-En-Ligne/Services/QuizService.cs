@@ -26,7 +26,7 @@ namespace Projet_Quiz_En_Ligne.Services
             return repo.FindById(id);
         }
 
-        public QuizQuestion FindQuestion(int quizId, int numOrder)
+        public Question FindQuestion(int quizId, int numOrder)
         {
             return repo.FindQuestion(quizId, numOrder);
         }
@@ -36,12 +36,12 @@ namespace Projet_Quiz_En_Ligne.Services
             return repo.FindQuizzes();
         }
 
-        public QuizReponse FindResponseById(int responseId)
+        public Reponse FindResponseById(int responseId)
         {
             return repo.FindResponseById(responseId);
         }
 
-        public List<QuizReponse> FindResponses(int questionId)
+        public List<Reponse> FindResponses(int questionId)
         {
             return repo.FindResponses(questionId);
         }
@@ -54,6 +54,11 @@ namespace Projet_Quiz_En_Ligne.Services
         public void Update(Quiz quiz)
         {
             repo.Update(quiz);
+        }
+
+        public List<Quiz> FindByCat(string category)
+        {
+            return repo.FindByCat(category);
         }
     }
 }

@@ -21,22 +21,22 @@ namespace Projet_Quiz_En_Ligne.Services
             repo.DeleteById(id);
         }
 
-        public List<QuizReponse> FindAll()
+        public List<Reponse> FindAll()
         {
             return repo.FindAll();
         }
 
-        public QuizReponse GetById(int id)
+        public Reponse GetById(int id)
         {
             return repo.GetById(id);
         }
 
-        public void Insert(QuizReponse rep)
+        public void Insert(Reponse rep)
         {
             repo.Insert(rep);
         }
 
-        public void Update(QuizReponse rep)
+        public void Update(Reponse rep)
         {
             repo.Update(rep);
         }

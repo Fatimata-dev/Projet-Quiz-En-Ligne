@@ -9,11 +9,11 @@ namespace Projet_Quiz_En_Ligne.Repositories
 {
     public interface ICategoryRepository
     {
-        List<QuizCategory> FindAll();
-        void Update(QuizCategory ctgr);
+        List<Category> FindAll();
+        void Update(Category ctgr);
         void DeleteById(int id);
-        QuizCategory FindById(int id);
+        Category FindById(int id);
 
-        void Insert(QuizCategory ctgr);
+        void Insert(Category ctgr);
     }
 }

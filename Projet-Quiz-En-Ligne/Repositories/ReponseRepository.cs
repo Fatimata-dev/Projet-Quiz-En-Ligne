@@ -18,7 +18,7 @@ namespace Projet_Quiz_En_Ligne.Repositories
 
         public void DeleteById(int id)
         {
-            QuizReponse rep = context.QuizReponses.Find(id);
+            Reponse rep = context.Reponses.Find(id);
             if (rep != null)
             {
                 context.Entry(rep).State = EntityState.Deleted;
@@ -31,23 +31,23 @@ namespace Projet_Quiz_En_Ligne.Repositories
            
         }
 
-        public List<QuizReponse> FindAll()
+        public List<Reponse> FindAll()
         {
-            return context.QuizReponses.AsNoTracking().ToList();
+            return context.Reponses.AsNoTracking().ToList();
         }
 
-        public QuizReponse GetById(int id)
+        public Reponse GetById(int id)
         {
-            return context.QuizReponses.Find(id);
+            return context.Reponses.Find(id);
         }
 
-        public void Insert(QuizReponse rep)
+        public void Insert(Reponse rep)
         {
-            context.QuizReponses.Add(rep);
+            context.Reponses.Add(rep);
             context.SaveChanges();
         }
 
-        public void Update(QuizReponse rep)
+        public void Update(Reponse rep)
         {
             if (rep != null)
             {

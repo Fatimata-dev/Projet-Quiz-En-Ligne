@@ -9,11 +9,11 @@ namespace Projet_Quiz_En_Ligne.Services
 {
     public interface IReponseService
     {
-        List<QuizReponse> FindAll();
-        void Update(QuizReponse rep);
-        QuizReponse GetById(int id);
+        List<Reponse> FindAll();
+        void Update(Reponse rep);
+        Reponse GetById(int id);
         void Delete(int id);
 
-        void Insert(QuizReponse rep);
+        void Insert(Reponse rep);
     }
 }

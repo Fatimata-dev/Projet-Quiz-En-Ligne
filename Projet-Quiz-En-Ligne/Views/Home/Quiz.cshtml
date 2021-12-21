@@ -1,0 +1,33 @@
+﻿@model Projet_Quiz_En_Ligne.Models.Question
+@using Projet_Quiz_En_Ligne.Models
+@{
+    ViewBag.Title = "Quiz";
+}
+
+<div class="container">
+    <h1>Questionnaire</h1>
+    <br />
+
+    <h2>Question @Model.NumOrder: @Model.QstText</h2>
+
+    <h3>
+        @using (Html.BeginForm("Next", "Home", FormMethod.Post))
+        {
+            foreach (Reponse rep in Model.Reponses)
+            {
+                if (!Model.IsMultiple)
+                {
+                    @Html.RadioButton("selectedSimpleRep", rep.Id)
+                }
+                else
+                {
+                    <input type="checkbox" name="selectedRep[]" value="@rep.Id" />
+                }
+                @rep.RespText
+                <br />
+            }
+            <input type="submit" value="Suivant" class="btn btn-default" />
+        }
+    </h3>
+</div>
+

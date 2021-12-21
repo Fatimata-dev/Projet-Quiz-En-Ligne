@@ -12,9 +12,9 @@ namespace Projet_Quiz_En_Ligne.Models
         }
 
         public  DbSet<Quiz> Quizzes { get; set; }
-        public  DbSet<QuizQuestion> QuizQuestions { get; set; }
-        public  DbSet<QuizReponse> QuizReponses { get; set; }
-        public  DbSet<QuizCategory> QuizCategories { get; set; }
+        public  DbSet<Question> Questions { get; set; }
+        public  DbSet<Reponse> Reponses { get; set; }
+        public  DbSet<Category> Categories { get; set; }
         public  DbSet<Resultat> Resultats { get; set; }
         public  DbSet<User> Users { get; set; }
     }

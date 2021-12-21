@@ -9,11 +9,11 @@ namespace Projet_Quiz_En_Ligne.Services
 {
     public interface ICategoryService
     {
-        List<QuizCategory> FindAll();
-        void Update(QuizCategory ctgr);
-        QuizCategory FindById(int id);
+        List<Category> FindAll();
+        void Update(Category ctgr);
+        Category FindById(int id);
         void DeleteById(int id);
 
-        void Insert(QuizCategory ctgr);
+        void Insert(Category ctgr);
     }
 }

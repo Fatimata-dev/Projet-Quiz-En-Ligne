@@ -18,9 +18,38 @@ namespace Projet_Quiz_En_Ligne.Controllers
         private QuestionService service = new QuestionService(new QuestionRepository(new MyContext()));
 
         // GET: QuizReponses
-        public ActionResult Index()
+        public ActionResult Index(int page = 0)
         {
             var quizReponses = reponseService.FindAll();
+            int pageSize = 4;
+            page = (page < 0) ? 0 : page; //opérateur ternaire
+
+            ViewBag.PreviousPage = page - 1;
+            ViewBag.NextPage = page + 1;
+            ViewBag.Page = page + 1;
+            int pagesTotales = 0;
+            if ((quizReponses.Count % pageSize) == 0)
+            {
+                pagesTotales = quizReponses.Count / pageSize;
+            }
+            else
+            {
+                pagesTotales = (quizReponses.Count / pageSize) + 1;
+            }
+
+            ViewBag.Totales = pagesTotales;
+
+            quizReponses = quizReponses.Skip(page * pageSize).Take(pageSize).ToList();
+
+            if (quizReponses.Count < pageSize)
+            {
+                ViewBag.NextPage = page;
+            }
+            else
+            {
+                ViewBag.NextPage = page + 1;
+            }
+
             return View(quizReponses);
         }
 

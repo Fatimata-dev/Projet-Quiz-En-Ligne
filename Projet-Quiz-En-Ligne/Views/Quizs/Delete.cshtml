@@ -5,47 +5,60 @@
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
-<h2>Delete</h2>
+<div class="main-content page-container">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h3 class="text-center title-2">Suppression</h3>
+                            </div>
+                            <hr>
+                            <hr />
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Sujet)
+                                </dt>
 
-<h3>Vous êtes sur?</h3>
-<div>
-    <h4>Quiz</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Sujet)
-        </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Sujet)
+                                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Sujet)
-        </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Image)
+                                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Image)
+                                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Image)
-        </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Category)
+                                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Category)
+                                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Category)
-        </dd>
+                            </dl>
 
-    </dl>
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+                                <div class="user-data__footer">
+                                    <input type="submit" value="Delete" class="au-btn au-btn-load" /> |
+                                    <button class="au-btn au-btn-load">@Html.ActionLink("Retour", "Index")</button>
+                                </div>
 
-        <div class="user-data__footer">
-            <input type="submit" value="Delete" class="au-btn au-btn-load" /> |
-            <button class="au-btn au-btn-load">@Html.ActionLink("Retour", "Index")</button>
+                            }
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
 
-    }
-</div>

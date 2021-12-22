@@ -4,40 +4,52 @@
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
+<div class="main-content page-container">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h3 class="text-center title-2">details</h3>
+                            </div>
+                            <hr>
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Sujet)
+                                </dt>
 
-<h2>Details</h2>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Sujet)
+                                </dd>
 
-<div>
-    <h4>Quiz</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Sujet)
-        </dt>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Image)
+                                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Sujet)
-        </dd>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Image)
+                                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Category)
+                                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Image)
-        </dd>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Category)
+                                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
+                            </dl>
+                        </div>
+                        <div class="user-data__footer">
+                            <button class="au-btn au-btn-load"> @Html.ActionLink("Modifier", "Edit", new { id = Model.Id })</button>
+                            <button class="au-btn au-btn-load">@Html.ActionLink("Retour", "Index")</button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Category)
-        </dd>
-
-    </dl>
-</div>
-<div class="user-data__footer">
-    <button class="au-btn au-btn-load"> @Html.ActionLink("Modifier", "Edit", new { id = Model.Id })</button>
-    <button class="au-btn au-btn-load">@Html.ActionLink("Retour", "Index")</button>
-</div>

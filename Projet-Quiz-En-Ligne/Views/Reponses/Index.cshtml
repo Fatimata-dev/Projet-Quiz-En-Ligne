@@ -11,9 +11,9 @@
     <div class="row m-t-30">
         <div class="col-md-12">
             <div class="my-5">
-            <button class="au-btn au-btn-icon au-btn--green au-btn--small">
-                <i class="zmdi zmdi-plus">@Html.ActionLink("Ajouter une reponse", "Create")</i>
-            </button>
+                <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+                    <i class="zmdi zmdi-plus">@Html.ActionLink("Ajouter une reponse", "Create")</i>
+                </button>
             </div>
             <div class="table-responsive m-b-40">
                 <table class="table table-borderless table-data3">
@@ -30,43 +30,57 @@
                             </th>
                             <th></th>
                         </tr>
-                        </thead>
+                    </thead>
 
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Question.QstText)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.RespText)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.IsCorrect)
-                                </td>
-                                <td>
-                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                        <i class="zmdi zmdi-edit">
-                                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                                        </i>
-                                    </button>
-                                    <button class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                        <i class="zmdi zmdi-more">
-                                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                                        </i>
-                                    </button>
-                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                        <i class="zmdi zmdi-delete">
-                                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                                        </i>
-                                    </button>
-                                </td>
-                            </tr>
-                        }
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Question.QstText)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RespText)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IsCorrect)
+                            </td>
+                            <td>
+                                <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                    <i class="zmdi zmdi-edit">
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                    </i>
+                                </button>
+                                <button class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                    <i class="zmdi zmdi-more">
+                                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                    </i>
+                                </button>
+                                <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                    <i class="zmdi zmdi-delete">
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                    </i>
+                                </button>
+                            </td>
+                        </tr>
+                    }
 
                 </table>
-                </div>
             </div>
+            <div aria-label="user-data__footer">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="/Reponses/Index?page=@ViewBag.PreviousPage"><i class="fas fa-backward"></i></a></li>
+                    <li class="page-item"><a class="page-link" href="#">@ViewBag.Page</a></li>
+
+                    <li class="page-item"><a class="page-link" href="/Reponses/Index?page=@ViewBag.NextPage"><i class="fas fa-forward"></i></a></li>
+                </ul>
+            </div>
+            <div class="user-data__footer">
+                <div class="au-btn au-btn-load">
+                    Page @ViewBag.Page sur @ViewBag.Totales
+                </div>
+                
+            </div>
+        </div>
         </div>
     </div>
 

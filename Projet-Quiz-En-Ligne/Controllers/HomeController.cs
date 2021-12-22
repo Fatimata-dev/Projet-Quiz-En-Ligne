@@ -16,34 +16,50 @@ namespace Projet_Quiz_En_Ligne.Controllers
         {
             return View();
         }
-        // public ActionResult Contact()
-        //{
-        //    return View();
-        //}
-        [HttpPost]
-        public ActionResult Index(EmailModel model)
+        public ActionResult Contact()
         {
-            using (MailMessage mm = new MailMessage(model.Email, model.To))
-            {
-                mm.Subject = model.Subject;
-                mm.Body = model.Body;
-
-                mm.IsBodyHtml = false;
-                using (SmtpClient smtp = new SmtpClient())
-                {
-                    smtp.Host = "smtp.gmail.com";
-                    smtp.EnableSsl = true;
-                    NetworkCredential cred = new NetworkCredential(model.Email, model.Password);
-                    smtp.UseDefaultCredentials = true;
-                    smtp.Credentials = cred;
-                    smtp.Port = 587;
-                    smtp.Send(mm);
-                    ViewBag.message = "Message envoyé";
-
-                }
-            }
             return View();
-
         }
+        [HttpPost]
+        public ActionResult Contact(EmailModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                using (MailMessage mm = new MailMessage(model.Email, model.To))
+                {
+                    mm.Subject = model.Subject;
+                    mm.Body = model.Body;
+
+
+                    mm.IsBodyHtml = false;
+                    using (SmtpClient smtp = new SmtpClient())
+                    {
+                        smtp.Host = "smtp.gmail.com";
+                        smtp.EnableSsl = true;
+                        NetworkCredential cred = new NetworkCredential(model.Email, model.Password);
+                        smtp.UseDefaultCredentials = true;
+                        smtp.Credentials = cred;
+                        smtp.Port = 587;
+                        smtp.Send(mm);
+                        ViewBag.message = "Message envoyé";
+
+                    }
+                }
+                 return RedirectToAction("Index");
+            }
+           
+            return View();
+            
+        }
+        //[HttpGet]
+  
+        //public ActionResult Logout()
+        //{
+        //    Session.Abandon();
+        //    Session.RemoveAll();
+        //    return RedirectToAction("Index");
+          
+        //}
+
     }
 }

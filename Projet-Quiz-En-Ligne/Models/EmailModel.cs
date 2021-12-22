@@ -8,7 +8,7 @@ namespace Projet_Quiz_En_Ligne.Models
 {
     public class EmailModel
     {
-         [Required(ErrorMessage = "Champ obligatoire")]
+        [Required(ErrorMessage = "Champ obligatoire")]
         [Display(Name = "Nom :")]
         public string To { get; set; }
         [Required(ErrorMessage = "Champ obligatoire")]

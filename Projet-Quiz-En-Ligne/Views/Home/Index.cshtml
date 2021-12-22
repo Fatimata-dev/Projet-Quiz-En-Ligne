@@ -1,15 +1,5 @@
-﻿
-@{
-    //ViewBag.Title = "Index";
-}
+﻿<!DOCTYPE HTML>
 
-
-<!DOCTYPE HTML>
-<!--
-    Phantom by HTML5 UP
-   
-    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 <head>
     <title>Phantom by HTML5 UP</title>
@@ -59,6 +49,23 @@
                     </h1>
                     <p>Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod sit amet nisi euismod sed cursus arcu elementum ipsum arcu vivamus quis venenatis orci lorem ipsum et magna feugiat veroeros aliquam. Lorem ipsum dolor sit amet nullam dolore.</p>
                 </header>
+                @*<div class="col-md-10">
+            @Html.DropDownList("QuizId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.QuizId, "", new { @class = "text-danger" })
+        </div>*@
+
+
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Choisissez un Quiz</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                        <option>JAVA</option>
+                        <option>HTML</option>
+                        <option>CSS</option>
+                        <option>JavaScipt</option>
+                        <option>C#</option>
+                    </select>
+                </div>
+
                 <section class="tiles">
                     <article class="style1">
                         <span class="image">
@@ -126,7 +133,7 @@
                             </div>
                         </a>
                     </article>
-                   
+
                 </section>
             </div>
         </div>
@@ -135,9 +142,9 @@
         <footer id="footer">
             <div class="inner">
  
-                <ul class="copyright">
+                <ul >
                     <li>&copy; Untitled. All rights reserved</li>
-                    <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+             
                 </ul>
             </div>
         </footer>
@@ -145,11 +152,11 @@
     </div>
 
     <!-- Scripts -->
-    <script src="./Content/js/jquery.min.js"></script>
+    @*<script src="./Content/js/jquery.min.js"></script>
     <script src="./Content/js/browser.min.js"></script>
     <script src="./Content/js/breakpoints.min.js"></script>
     <script src="./Content/js/util.js"></script>
-    <script src="./Content/js/main.js"></script>
+    <script src="./Content/js/main.js"></script>*@
 
 </body>
 </html>

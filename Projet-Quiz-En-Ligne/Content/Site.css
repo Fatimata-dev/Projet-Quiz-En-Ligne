@@ -15,10 +15,11 @@ select,
 textarea {
     max-width: 280px;
 }
-
-.navbar-header{
-    padding: 30px;
+.navbar-header {
     background: grey;
-    
+    padding: 20px;
+   
 }
-
+ul{
+    width: 100%;
+}

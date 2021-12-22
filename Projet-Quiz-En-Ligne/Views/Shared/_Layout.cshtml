@@ -4,21 +4,39 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="~/Content/css/main.css" />
+   <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    @*<link href="~/Content/css/bootstrap.min.css" rel="stylesheet" type="text/css" />*@
+    @*<link rel="stylesheet" href="~/Content/css/main.css" />*@
+    @*<link href="~/Content/css/bootstrap.css" rel="stylesheet" />*@
+
     <noscript><link rel="stylesheet" href="~/Content/css/noscript.css" /></noscript>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="~/Scripts/modernizr-2.8.3.js"></script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+        @*<div class="container">
             <div class="navbar-header">
 
-                @Html.ActionLink("Accueil", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Connexion", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
+            </div>*@
+        <ul class="navbar-header" style="float:right !important">
+            @Html.ActionLink("Accueil", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            @if (Session["UsernameUs"] != null)
+            {
+                <li><p style="color:red; margin-top:15px;">Hello @Session["UsernameUs"]</p></li>
+                @Html.ActionLink("Deconnexion", "Logout", "Admin", new { area = "" }, new { @class = "navbar-brand" })
+            }
+            else
+            {
+                @Html.ActionLink("Connexion", "Login", "Admin", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Inscription", "Signup", "Admin", new { area = "" }, new { @class = "navbar-brand" })
+            }
+            @Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        </ul>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                 </ul>
@@ -34,12 +52,14 @@
         </footer>
     </div>
 
-    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+    @*<script src="~/Scripts/jquery-3.4.1.min.js"></script>*@
+    @*<script src="~/Scripts/bootstrap.min.js"></script>*@
     <script src="~/Content/js/jquery.min.js"></script>
     <script src="~/Content/js/browser.min.js"></script>
     <script src="~/Content/js/breakpoints.min.js"></script>
     <script src="~/Content/js/util.js"></script>
     <script src="~/Content/js/main.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+
 </body>
 </html>

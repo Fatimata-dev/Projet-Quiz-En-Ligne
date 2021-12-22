@@ -36,13 +36,22 @@ namespace Projet_Quiz_En_Ligne.Controllers
             }
             else
             {
+
                 service.Insert(user);
-              
+                if (user.IsAdmin)
+                {
+                    Session["AdminId"] = user.Id.ToString();
+                    Session["AdminName"] = user.Name.ToString();
+                    return RedirectToAction("IndexRegister", "Admin");
+                }
+                else
+                {
+                    Session["IdUs"] = user.Id.ToString();
+                    Session["UsernameUs"] = user.Name.ToString();
+                    return RedirectToAction("Index", "Home");
+                }
+               
 
-               Session["IdUs"] = user.Id.ToString();
-               Session["UsernameUs"] = user.Name.ToString();
-
-                return RedirectToAction("IndexRegister", "Admin");
             }
 
         
@@ -67,13 +76,24 @@ namespace Projet_Quiz_En_Ligne.Controllers
             var checkLogin = service.GetUser(user.Email, user.Password);
                 if(checkLogin != null)
             {
-                Session["IdUs"] = user.Id.ToString();
-                Session["UsernameUs"] = user.Name.ToString();
-                return RedirectToAction("IndexRegister", "Admin");
+                if (checkLogin.IsAdmin)
+                {
+                    Session["AdminId"] = checkLogin.Id.ToString();
+                    Session["AdminName"] = checkLogin.Name.ToString();
+                    return RedirectToAction("IndexRegister", "Admin");
+                }
+                else
+                {
+                    Session["IdUs"] = checkLogin.Id.ToString();
+                    Session["UsernameUs"] = checkLogin.Name.ToString();
+                    return RedirectToAction("Index", "Home");
+                }
+              
 
             }
             else
             {
+
                 ViewBag.Notification = "Mauvais nom d utilisateur ou mdp";
             }
             return View();

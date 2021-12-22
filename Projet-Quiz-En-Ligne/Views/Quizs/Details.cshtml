@@ -1,0 +1,43 @@
+﻿@model Projet_Quiz_En_Ligne.Models.Quiz
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Quiz</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Sujet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sujet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+
+    </dl>
+</div>
+<div class="user-data__footer">
+    <button class="au-btn au-btn-load"> @Html.ActionLink("Modifier", "Edit", new { id = Model.Id })</button>
+    <button class="au-btn au-btn-load">@Html.ActionLink("Retour", "Index")</button>
+</div>

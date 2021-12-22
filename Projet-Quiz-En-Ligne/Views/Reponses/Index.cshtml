@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Projet_Quiz_En_Ligne.Models.Reponse>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<div class="container-fluid mx-auto">
+    <div class="row m-t-30">
+        <div class="col-md-12">
+            <div class="my-5">
+            <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+                <i class="zmdi zmdi-plus">@Html.ActionLink("Ajouter une reponse", "Create")</i>
+            </button>
+            </div>
+            <div class="table-responsive m-b-40">
+                <table class="table table-borderless table-data3">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Question.QstText)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.RespText)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.IsCorrect)
+                            </th>
+                            <th></th>
+                        </tr>
+                        </thead>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Question.QstText)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.RespText)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IsCorrect)
+                                </td>
+                                <td>
+                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                        <i class="zmdi zmdi-edit">
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                        </i>
+                                    </button>
+                                    <button class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                        <i class="zmdi zmdi-more">
+                                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                        </i>
+                                    </button>
+                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                        <i class="zmdi zmdi-delete">
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                        </i>
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+

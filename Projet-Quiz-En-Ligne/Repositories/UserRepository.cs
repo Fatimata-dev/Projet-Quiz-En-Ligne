@@ -1,4 +1,6 @@
 ﻿    using Projet_Quiz_En_Ligne.Models;
+using Projet_Quiz_En_Ligne.Tools;
+using Projet_Quiz_En_Ligne.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -22,31 +24,51 @@ namespace Projet_Quiz_En_Ligne.Repositories
             context.SaveChanges();
         }
 
-        public List<User> FindAll()
+        public List<UserResultViewModel> FindAll()
         {
-            return context.Users.AsNoTracking().ToList();
+            List<UserResultViewModel> lst = new List<UserResultViewModel>();
+            List<User> users =  context.Users.AsNoTracking().ToList();
+            foreach (var user in users)
+            {
+                lst.Add(Convertisseur.UuserViewModelFromUser(new UserResultViewModel(), user));
+            }
+            return lst;
         }
 
-        public User GetById(int id)
-        {
-            User user = context.Users.FirstOrDefault(u => u.Id == id);
-            return user;
-        }
+        //public UserResultViewModel GetById(int id)
+        //{
+        //    UserResultViewModel userVM = null;
+        //    User user = context.Users.FirstOrDefault(u => u.Id == id);
+        //    if (user != null)
+        //    {
+        //        userVM = Convertisseur.UuserViewModelFromUser(userViewModel, user);
+        //    }
+        //    return user;
+        //}
 
-        public User GetUser(User user)
+        public UserResultViewModel GetUser(UserResultViewModel userViewModel)
         {
-           return context.Users.FirstOrDefault(u => u.Email == user.Email && u.Password == user.Password);
+            UserResultViewModel userVM = null;
+            User user = context.Users.FirstOrDefault(u => u.Email == userViewModel.Email && u.Password == userViewModel.Password);
+            if (user != null)
+            {
+                userVM = Convertisseur.UuserViewModelFromUser(userViewModel, user);
+            }
+            return userVM;
             
         }
 
-        public void Insert(User user)
+        public void Insert(UserResultViewModel userViewModel)
         {
+            User user = Convertisseur.UserFromUserViewModel(userViewModel, new User());
             context.Users.Add(user);
             context.SaveChanges();
         }
 
-        public void Update(User user)
+        public void Update(UserResultViewModel userViewModel)
         {
+            User user = Convertisseur.UserFromUserViewModel(userViewModel, new User());
+
             if (user != null)
             {
                 context.Entry(user).State = EntityState.Modified;

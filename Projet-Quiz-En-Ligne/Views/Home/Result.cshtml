@@ -6,7 +6,8 @@
          usevm = (UserResultViewModel)Session["User"];
         <h2>Vos resultats</h2>
         <div class="container">
-            <h2>Bonjour @usevm.Name</h2>
+            <h2>Bienvenu @usevm.Name</h2>
+            <p>Pour le quiz en @usevm.quiz.Sujet</p>
             <h2>Votre score est de: @usevm.resultat.Score</h2>
         </div>
     }

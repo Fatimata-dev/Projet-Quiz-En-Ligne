@@ -1,3 +1,4 @@
+using Projet_Quiz_En_Ligne.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace Projet_Quiz_En_Ligne
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            MapperTools.Configure();
         }
     }
 }

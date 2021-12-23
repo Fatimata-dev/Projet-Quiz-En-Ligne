@@ -25,31 +25,41 @@ namespace Projet_Quiz_En_Ligne.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Signup(User user)
+        public ActionResult Signup(UserResultViewModel userVm)
         {
-            //User u = service.GetUser(user);
-            if (user != null)
+            //UserResultViewModel u = service.GetUser(userVm);
+            if (ModelState.IsValid)
             {
-                ViewBag.Notification = "Ce compte existe deja";
-                return View();
+                //if (userVm != null)
+                //{
+                //    ViewBag.Notification = "Ce compte existe deja";
+                //    return View();
 
+                //}
+                //else
+                //{
+                    userVm.quiz = null;
+                    userVm.resultat = null;
+                    service.Insert(userVm);
+                    return RedirectToAction("Login", "Admin");
+                    //service.Insert(userVm);
+                    //if (userVm.IsAdmin)
+                    //{
+                    //    Session["Admin"] = userVm;
+                    //    return RedirectToAction("Index", "Admin");
+                    //}
+                    //else
+                    //{
+                    //    Session["User"] = userVm;
+                    //    return RedirectToAction("Index", "Home");
+                    //}
+
+
+                //}
             }
             else
             {
-
-                service.Insert(user);
-                if (user.IsAdmin)
-                {
-                    Session["Admin"] = user;
-                    return RedirectToAction("Index", "Admin");
-                }
-                else
-                {
-                    Session["User"] = user;
-                    return RedirectToAction("Index", "Home");
-                }
-
-
+                return View(userVm);
             }
 
 

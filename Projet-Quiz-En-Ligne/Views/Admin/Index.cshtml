@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Projet_Quiz_En_Ligne.Models.User>
+﻿@model IEnumerable<Projet_Quiz_En_Ligne.ViewModel.UserResultViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -24,9 +24,6 @@
         <th>
             @Html.DisplayNameFor(model => model.IsAdmin)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TotalPoints)
-        </th>
         <th></th>
     </tr>
 
@@ -43,9 +40,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.IsAdmin)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TotalPoints)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

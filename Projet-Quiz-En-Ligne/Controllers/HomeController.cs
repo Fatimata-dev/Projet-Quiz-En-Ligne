@@ -113,11 +113,12 @@ namespace Projet_Quiz_En_Ligne.Controllers
                     user = (UserResultViewModel)Session["User"];
                    
                     Resultat resultat = new Resultat();
-                    user.resultat.UserId = user.Id;
-                    user.resultat.QuizId = selectedQuizId;
-                    user.resultat.Date = new DateTime();
-                    user.resultat.Score = score;
-                    user.resultat.Score = resultat.Score;
+                    resultat.UserId = user.Id;
+                    resultat.QuizId = selectedQuizId;
+                    resultat.Date = new DateTime();
+                    resultat.Score = score;
+                    user.resultat = resultat;
+                    user.quiz = qcm;
                 }
                 //Repmlir la table Historique
                 //Envoyer le résultat par email

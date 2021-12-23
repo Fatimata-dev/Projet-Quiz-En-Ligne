@@ -21,8 +21,8 @@ namespace Projet_Quiz_En_Ligne.Models
         [DataType(DataType.Password)]
         public string Password { get; set; }
         public bool IsAdmin { get; set; }
-        public int TotalPoints { get; set; }
-
+        public Quiz quiz { get; set; }
+        public Resultat resultat { get; set; }
         public override string ToString()
         {
             return Name;

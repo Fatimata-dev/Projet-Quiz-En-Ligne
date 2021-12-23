@@ -1,6 +1,7 @@
 ﻿using Projet_Quiz_En_Ligne.Models;
 using Projet_Quiz_En_Ligne.Repositories;
 using Projet_Quiz_En_Ligne.Tools;
+using Projet_Quiz_En_Ligne.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,32 +23,33 @@ namespace Projet_Quiz_En_Ligne.Services
             repo.Delete(id);
         }
 
-        public List<User> FindAll()
+        public List<UserResultViewModel> FindAll()
         {
             return repo.FindAll();
         }
 
-        public User GetById(int id)
+        //public User GetById(int id)
+        //{
+        //    return repo.GetById(id);
+        //}
+
+        public UserResultViewModel GetUser(UserResultViewModel userVM)
         {
-            return repo.GetById(id);
+            userVM.Password = HashTool.CryptPassword(userVM.Password);
+            UserResultViewModel userViewModel =  repo.GetUser(userVM);
+            return userViewModel;
         }
 
-        public User GetUser(User user)
+        public void Insert(UserResultViewModel userVM)
         {
-            user.Password = HashTool.CryptPassword(user.Password);
-            return repo.GetUser(user);
+            userVM.Password = HashTool.CryptPassword(userVM.Password);
+            repo.Insert(userVM);
         }
 
-        public void Insert(User user)
+        public void Update(UserResultViewModel userVM)
         {
-            user.Password = HashTool.CryptPassword(user.Password);
-            repo.Insert(user);
-        }
-
-        public void Update(User user)
-        {
-            user.Password = HashTool.CryptPassword(user.Password);
-            repo.Update(user);
+            userVM.Password = HashTool.CryptPassword(userVM.Password);
+            repo.Update(userVM);
         }
     }
 }

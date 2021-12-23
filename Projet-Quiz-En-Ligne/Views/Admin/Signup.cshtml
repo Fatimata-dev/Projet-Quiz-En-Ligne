@@ -1,8 +1,7 @@
-﻿@model Projet_Quiz_En_Ligne.Models.User
+﻿@model Projet_Quiz_En_Ligne.ViewModel.UserResultViewModel
 
 @{
     ViewBag.Title = "Signup";
-    
 }
 
 <h2>Signup</h2>
@@ -49,14 +48,6 @@
             </div>
         </div>
 
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.TotalPoints, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TotalPoints, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TotalPoints, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
@@ -65,7 +56,6 @@
     </div>
 }
 
-
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

@@ -43,6 +43,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.10.1.1\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -338,6 +341,14 @@
     <Compile Include="Migrations\202112171741125_IdQuiz.Designer.cs">
       <DependentUpon>202112171741125_IdQuiz.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202112231553424_Modif1.cs" />
+    <Compile Include="Migrations\202112231553424_Modif1.Designer.cs">
+      <DependentUpon>202112231553424_Modif1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112231706268_ModelUser.cs" />
+    <Compile Include="Migrations\202112231706268_ModelUser.Designer.cs">
+      <DependentUpon>202112231706268_ModelUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\MyContext.cs" />
     <Compile Include="Models\Quiz.cs" />
@@ -371,7 +382,9 @@
     <Compile Include="Services\ReponseService.cs" />
     <Compile Include="Services\ResultService.cs" />
     <Compile Include="Services\UserService.cs" />
+    <Compile Include="Tools\Convertisseur.cs" />
     <Compile Include="Tools\HashTool.cs" />
+    <Compile Include="Tools\MapperTools.cs" />
     <Compile Include="ViewModel\ListQuizsCategoriesViewModel.cs" />
     <Compile Include="ViewModel\QuizCategoryViewModel.cs" />
     <Compile Include="ViewModel\UserResultViewModel.cs" />
@@ -541,6 +554,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202112171741125_IdQuiz.resx">
       <DependentUpon>202112171741125_IdQuiz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112231553424_Modif1.resx">
+      <DependentUpon>202112231553424_Modif1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112231706268_ModelUser.resx">
+      <DependentUpon>202112231706268_ModelUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

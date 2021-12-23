@@ -15,20 +15,28 @@ namespace Projet_Quiz_En_Ligne.Repositories
         {
             this.context = context;
         }
-
         public void Delete(int id)
         {
-            User user = context.Users.SingleOrDefault(u => u.Id == id);
-            if (user != null)
-            {
-                context.Entry(user).State = EntityState.Deleted;
-                context.SaveChanges();
-            }
+            User user = context.Users.Find(id);
+            context.Users.Remove(user);
+            context.SaveChanges();
         }
 
         public List<User> FindAll()
         {
             return context.Users.AsNoTracking().ToList();
+        }
+
+        public User GetById(int id)
+        {
+            User user = context.Users.FirstOrDefault(u => u.Id == id);
+            return user;
+        }
+
+        public User GetUser(User user)
+        {
+           return context.Users.FirstOrDefault(u => u.Email == user.Email && u.Password == user.Password);
+            
         }
 
         public void Insert(User user)
@@ -37,6 +45,15 @@ namespace Projet_Quiz_En_Ligne.Repositories
             context.SaveChanges();
         }
 
-       
+        public void Update(User user)
+        {
+            if (user != null)
+            {
+                context.Entry(user).State = EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
+
+
     }
 }

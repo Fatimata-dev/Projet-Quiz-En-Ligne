@@ -352,21 +352,29 @@
     <Compile Include="Repositories\IQuestionRepository.cs" />
     <Compile Include="Repositories\IQuizRepository.cs" />
     <Compile Include="Repositories\IReponseRepository.cs" />
+    <Compile Include="Repositories\IResultRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Repositories\QuestionRepository.cs" />
     <Compile Include="Repositories\QuizRepository.cs" />
     <Compile Include="Repositories\ReponseRepository.cs" />
+    <Compile Include="Repositories\ResultRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Services\ICategoryService.cs" />
     <Compile Include="Services\IQuestionService.cs" />
     <Compile Include="Services\IQuizService.cs" />
     <Compile Include="Services\CategoryService.cs" />
     <Compile Include="Services\IReponseService.cs" />
+    <Compile Include="Services\IResultService.cs" />
+    <Compile Include="Services\IUserService.cs" />
     <Compile Include="Services\QuestionService.cs" />
     <Compile Include="Services\QuizService.cs" />
     <Compile Include="Services\ReponseService.cs" />
+    <Compile Include="Services\ResultService.cs" />
+    <Compile Include="Services\UserService.cs" />
+    <Compile Include="Tools\HashTool.cs" />
     <Compile Include="ViewModel\ListQuizsCategoriesViewModel.cs" />
     <Compile Include="ViewModel\QuizCategoryViewModel.cs" />
+    <Compile Include="ViewModel\UserResultViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -501,6 +509,8 @@
     <Content Include="Views\Home\Result.cshtml" />
     <Content Include="Views\Quizs\Edit.cshtml" />
     <Content Include="Views\Shared\AdminLayout.cshtml" />
+    <Content Include="Views\Admin\Signup.cshtml" />
+    <Content Include="Views\Admin\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -511,6 +521,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\images\" />
+    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202112111819588_InitialModel.resx">

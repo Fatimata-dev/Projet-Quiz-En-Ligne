@@ -27,6 +27,25 @@
             </div>
         </div>
     </div>
+    <ul class="navbar-header" style="float:right !important">
+        @Html.ActionLink("Accueil", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        @if (Session["User"] != null || Session["Admin"] != null)
+        {
+            <li><p style="color:red; margin-top:15px;">Hello @Session["UserName"]</p></li>
+            @Html.ActionLink("Deconnexion", "Logout", "Admin", new { area = "" }, new { @class = "navbar-brand" })
+        }
+        else
+        {
+            @Html.ActionLink("Connexion", "Login", "Admin", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Inscription", "Signup", "Admin", new { area = "" }, new { @class = "navbar-brand" })
+        }
+        @if (Session["Admin"] != null)
+        {
+            @Html.ActionLink("Liste des inscrit", "Index", "Admin", new { area = "" }, new { @class = "navbar-brand" })
+
+        }
+        @Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    </ul>
 
     <div class="container body-content">
         @RenderBody()

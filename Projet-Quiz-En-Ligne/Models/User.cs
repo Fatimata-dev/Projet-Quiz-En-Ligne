@@ -8,13 +8,13 @@ namespace Projet_Quiz_En_Ligne.Models
         {
         }
 
-        public int? Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         public string Name { get; set; }
 
         [Required]
-        [DataType(DataType.Password)]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
         [Required]

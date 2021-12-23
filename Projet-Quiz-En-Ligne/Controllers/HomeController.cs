@@ -15,6 +15,7 @@ namespace Projet_Quiz_En_Ligne.Controllers
         private QuizService service = new QuizService(new QuizRepository(new MyContext()));
         private CategoryService categoryService = new CategoryService(new CategoryRepository(new MyContext()));
         private QuestionService questionService = new QuestionService(new QuestionRepository(new MyContext()));
+        private ResultService result = new ResultService(new ResultRepository(new MyContext()));
         // GET: Home
         public ActionResult Index(string Category = null)
         {
@@ -106,6 +107,18 @@ namespace Projet_Quiz_En_Ligne.Controllers
             }
             else
             {
+                UserResultViewModel user = new UserResultViewModel();
+                if (Session["User"] != null)
+                {
+                    user = (UserResultViewModel)Session["User"];
+                   
+                    Resultat resultat = new Resultat();
+                    user.resultat.UserId = user.Id;
+                    user.resultat.QuizId = selectedQuizId;
+                    user.resultat.Date = new DateTime();
+                    user.resultat.Score = score;
+                    user.resultat.Score = resultat.Score;
+                }
                 //Repmlir la table Historique
                 //Envoyer le résultat par email
                 return View("Result");

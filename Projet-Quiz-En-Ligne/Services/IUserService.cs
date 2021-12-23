@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Projet_Quiz_En_Ligne.Repositories
+namespace Projet_Quiz_En_Ligne.Services
 {
-    public interface IUserRepository
+    public interface IUserService
     {
         List<User> FindAll();
         void Insert(User user);

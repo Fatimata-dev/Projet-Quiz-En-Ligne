@@ -1,10 +1,22 @@
-﻿
+﻿@using Projet_Quiz_En_Ligne.ViewModel;
 @{
-    ViewBag.Title = "Result";
+    UserResultViewModel usevm = new UserResultViewModel();
+    if (Session["User"] != null)
+    {
+         usevm = (UserResultViewModel)Session["User"];
+        <h2>Vos resultats</h2>
+        <div class="container">
+            <h2>Bonjour @usevm.Name</h2>
+            <h2>Votre score est de: @usevm.resultat.Score</h2>
+        </div>
+    }
+    else
+    {
+        <div class="container">
+            <h2>Votre score est de: @Session["score"]</h2>
+        </div>
+    }
 }
 
-<h2>Vos resultats</h2>
-<div class="container">
-    <h2>Votre score est de: @Session["score"]</h2>
-</div>
+
 

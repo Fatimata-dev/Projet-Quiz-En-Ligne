@@ -48,7 +48,7 @@ namespace Projet_Quiz_En_Ligne.Controllers
                 {
                     Session["IdUs"] = user.Id.ToString();
                     Session["UsernameUs"] = user.Name.ToString();
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index2", "Home");
                 }
                
 
@@ -60,7 +60,7 @@ namespace Projet_Quiz_En_Ligne.Controllers
         {
             Session.Clear();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index2", "Home");
         }
        
         [HttpGet]
@@ -86,7 +86,7 @@ namespace Projet_Quiz_En_Ligne.Controllers
                 {
                     Session["IdUs"] = checkLogin.Id.ToString();
                     Session["UsernameUs"] = checkLogin.Name.ToString();
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index2", "Home");
                 }
               
 

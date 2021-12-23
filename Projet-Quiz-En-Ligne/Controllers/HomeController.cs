@@ -16,6 +16,10 @@ namespace Projet_Quiz_En_Ligne.Controllers
         {
             return View();
         }
+        public ActionResult Index2()
+        {
+            return View();
+        }
         public ActionResult Contact()
         {
             return View();
@@ -45,7 +49,7 @@ namespace Projet_Quiz_En_Ligne.Controllers
 
                     }
                 }
-                 return RedirectToAction("Index");
+                 return RedirectToAction("Index2");
             }
            
             return View();

@@ -93,6 +93,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\assets\css\fontawesome-all.min.css" />
+    <Content Include="Content\assets\css\main.css" />
+    <Content Include="Content\assets\css\noscript.css" />
+    <Content Include="Content\assets\js\breakpoints.min.js" />
+    <Content Include="Content\assets\js\browser.min.js" />
+    <Content Include="Content\assets\js\jquery.min.js" />
+    <Content Include="Content\assets\js\jquery.scrollex.min.js" />
+    <Content Include="Content\assets\js\jquery.scrolly.min.js" />
+    <Content Include="Content\assets\js\main.js" />
+    <Content Include="Content\assets\js\util.js" />
     <Content Include="Content\css\bootstrap-grid.css" />
     <Content Include="Content\css\bootstrap-grid.min.css" />
     <Content Include="Content\css\bootstrap-reboot.css" />
@@ -102,6 +112,10 @@
     <Content Include="Content\css\fontawesome-all.min.css" />
     <Content Include="Content\css\main.css" />
     <Content Include="Content\css\noscript.css" />
+    <Content Include="Content\Font\fa-brands-400.svg" />
+    <Content Include="Content\Font\fa-regular-400.svg" />
+    <Content Include="Content\Font\fa-solid-900.svg" />
+    <Content Include="Content\Font\twitter-brands.svg" />
     <Content Include="Content\js\bootstrap.bundle.js" />
     <Content Include="Content\js\bootstrap.bundle.min.js" />
     <Content Include="Content\js\bootstrap.js" />
@@ -116,6 +130,12 @@
     <Content Include="Content\js\util.js" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
+    <Content Include="images\pic01.jpg" />
+    <Content Include="images\pic02.jpg" />
+    <Content Include="images\pic03.jpg" />
+    <Content Include="images\pic04.jpg" />
+    <Content Include="images\pic05.jpg" />
+    <Content Include="images\pic06.jpg" />
     <Content Include="images\youtube-g038a76721_640.png" />
     <Content Include="Models\DBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -227,6 +247,18 @@
     <Content Include="Content\js\bootstrap.bundle.min.js.map" />
     <Content Include="Content\js\bootstrap.js.map" />
     <Content Include="Content\js\bootstrap.min.js.map" />
+    <Content Include="Content\Font\fa-brands-400.eot" />
+    <Content Include="Content\Font\fa-brands-400.ttf" />
+    <Content Include="Content\Font\fa-brands-400.woff" />
+    <Content Include="Content\Font\fa-brands-400.woff2" />
+    <Content Include="Content\Font\fa-regular-400.eot" />
+    <Content Include="Content\Font\fa-regular-400.ttf" />
+    <Content Include="Content\Font\fa-regular-400.woff" />
+    <Content Include="Content\Font\fa-regular-400.woff2" />
+    <Content Include="Content\Font\fa-solid-900.eot" />
+    <Content Include="Content\Font\fa-solid-900.ttf" />
+    <Content Include="Content\Font\fa-solid-900.woff" />
+    <Content Include="Content\Font\fa-solid-900.woff2" />
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -236,6 +268,7 @@
     <Content Include="Views\Admin\Signup.cshtml" />
     <Content Include="Views\Admin\IndexRegister.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
+    <Content Include="Views\Home\Index2.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

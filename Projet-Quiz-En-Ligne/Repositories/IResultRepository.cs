@@ -9,7 +9,7 @@ namespace Projet_Quiz_En_Ligne.Repositories
 {
     public interface IResultRepository
     {
-        List<Resultat> FindUserResults( int userId, int quizId);
+        List<Resultat> FindUserResults( int userId);
         Resultat FindOne( int userId, int quizId);
         void Add(Resultat resultat);
     }

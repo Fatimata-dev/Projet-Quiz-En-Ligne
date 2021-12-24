@@ -26,9 +26,9 @@ namespace Projet_Quiz_En_Ligne.Services
             return repo.FindOne(userId, quizId);
         }
 
-        public List<Resultat> FindUserResults(int userId, int quizId)
+        public List<Resultat> FindUserResults(int userId)
         {
-            return repo.FindUserResults(userId, quizId);
+            return repo.FindUserResults(userId);
         }
     }
 }

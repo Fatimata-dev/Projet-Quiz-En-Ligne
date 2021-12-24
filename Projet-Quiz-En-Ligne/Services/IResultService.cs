@@ -9,7 +9,7 @@ namespace Projet_Quiz_En_Ligne.Services
 {
     public interface IResultService
     {
-        List<Resultat> FindUserResults(int userId, int quizId);
+        List<Resultat> FindUserResults(int userId);
         Resultat FindOne(int userId, int quizId);
         void Add(Resultat resultat);
     }

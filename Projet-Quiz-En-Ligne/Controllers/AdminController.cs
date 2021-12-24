@@ -30,32 +30,10 @@ namespace Projet_Quiz_En_Ligne.Controllers
             //UserResultViewModel u = service.GetUser(userVm);
             if (ModelState.IsValid)
             {
-                //if (userVm != null)
-                //{
-                //    ViewBag.Notification = "Ce compte existe deja";
-                //    return View();
-
-                //}
-                //else
-                //{
-                    userVm.quiz = null;
-                    userVm.resultat = null;
+                userVm.quiz = null;
+                userVm.resultat = null;
                     service.Insert(userVm);
                     return RedirectToAction("Login", "Admin");
-                    //service.Insert(userVm);
-                    //if (userVm.IsAdmin)
-                    //{
-                    //    Session["Admin"] = userVm;
-                    //    return RedirectToAction("Index", "Admin");
-                    //}
-                    //else
-                    //{
-                    //    Session["User"] = userVm;
-                    //    return RedirectToAction("Index", "Home");
-                    //}
-
-
-                //}
             }
             else
             {

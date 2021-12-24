@@ -111,12 +111,13 @@ namespace Projet_Quiz_En_Ligne.Controllers
                 if (Session["User"] != null)
                 {
                     user = (UserResultViewModel)Session["User"];
-                   
+                    DateTime dateTime = DateTime.Now;
                     Resultat resultat = new Resultat();
                     resultat.UserId = user.Id;
                     resultat.QuizId = selectedQuizId;
-                    resultat.Date = new DateTime();
+                    resultat.Date = dateTime;
                     resultat.Score = score;
+                    result.Add(resultat);
                     user.resultat = resultat;
                     user.quiz = qcm;
                 }

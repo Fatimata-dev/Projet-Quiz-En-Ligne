@@ -303,6 +303,36 @@
     <Content Include="Content\Admin\vendor\vector-map\jqvmap.min.css" />
     <Content Include="Content\Admin\vendor\wow\animate.css" />
     <Content Include="Content\Admin\vendor\wow\wow.min.js" />
+    <Content Include="Content\user\css\main.css" />
+    <Content Include="Content\user\css\util.css" />
+    <Content Include="Content\user\fonts\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="Content\user\fonts\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="Content\user\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\user\fonts\font-awesome-4.7.0\HELP-US-OUT.txt" />
+    <Content Include="Content\user\fonts\montserrat\OFL.txt" />
+    <Content Include="Content\user\images\icons\favicon.ico" />
+    <Content Include="Content\user\images\img-01.png" />
+    <Content Include="Content\user\js\main.js" />
+    <Content Include="Content\user\vendor\animate\animate.css" />
+    <Content Include="Content\user\vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="Content\user\vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="Content\user\vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="Content\user\vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="Content\user\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\user\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\user\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\user\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\user\vendor\bootstrap\js\popper.js" />
+    <Content Include="Content\user\vendor\bootstrap\js\popper.min.js" />
+    <Content Include="Content\user\vendor\bootstrap\js\tooltip.js" />
+    <Content Include="Content\user\vendor\css-hamburgers\hamburgers.css" />
+    <Content Include="Content\user\vendor\css-hamburgers\hamburgers.min.css" />
+    <Content Include="Content\user\vendor\jquery\jquery-3.2.1.min.js" />
+    <Content Include="Content\user\vendor\select2\select2.css" />
+    <Content Include="Content\user\vendor\select2\select2.js" />
+    <Content Include="Content\user\vendor\select2\select2.min.css" />
+    <Content Include="Content\user\vendor\select2\select2.min.js" />
+    <Content Include="Content\user\vendor\tilt\tilt.jquery.min.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -321,33 +351,13 @@
     <Compile Include="Migrations\202112111819588_InitialModel.designer.cs">
       <DependentUpon>202112111819588_InitialModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202112111936519_Modif.cs" />
-    <Compile Include="Migrations\202112111936519_Modif.Designer.cs">
-      <DependentUpon>202112111936519_Modif.cs</DependentUpon>
+    <Compile Include="Migrations\202112231851119_ModifuserModel.cs" />
+    <Compile Include="Migrations\202112231851119_ModifuserModel.Designer.cs">
+      <DependentUpon>202112231851119_ModifuserModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202112112014503_ConstructeurSansParams.cs" />
-    <Compile Include="Migrations\202112112014503_ConstructeurSansParams.Designer.cs">
-      <DependentUpon>202112112014503_ConstructeurSansParams.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202112160832374_ModifModels.cs" />
-    <Compile Include="Migrations\202112160832374_ModifModels.Designer.cs">
-      <DependentUpon>202112160832374_ModifModels.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202112171401225_ModelsNames.cs" />
-    <Compile Include="Migrations\202112171401225_ModelsNames.Designer.cs">
-      <DependentUpon>202112171401225_ModelsNames.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202112171741125_IdQuiz.cs" />
-    <Compile Include="Migrations\202112171741125_IdQuiz.Designer.cs">
-      <DependentUpon>202112171741125_IdQuiz.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202112231553424_Modif1.cs" />
-    <Compile Include="Migrations\202112231553424_Modif1.Designer.cs">
-      <DependentUpon>202112231553424_Modif1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202112231706268_ModelUser.cs" />
-    <Compile Include="Migrations\202112231706268_ModelUser.Designer.cs">
-      <DependentUpon>202112231706268_ModelUser.cs</DependentUpon>
+    <Compile Include="Migrations\202112240958527_ModelUser.cs" />
+    <Compile Include="Migrations\202112240958527_ModelUser.Designer.cs">
+      <DependentUpon>202112240958527_ModelUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\MyContext.cs" />
@@ -494,6 +504,81 @@
     <Content Include="Content\Admin\vendor\slick\slick-theme.scss" />
     <Content Include="Content\Admin\vendor\slick\slick.less" />
     <Content Include="Content\Admin\vendor\slick\slick.scss" />
+    <Content Include="Content\user\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\user\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\user\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\user\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\user\fonts\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="Content\user\fonts\font-awesome-4.7.0\less\animated.less" />
+    <Content Include="Content\user\fonts\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <Content Include="Content\user\fonts\font-awesome-4.7.0\less\core.less" />
+    <Content Include="Content\user\fonts\font-awesome-4.7.0\less\fixed-width.less" />
+    <Content Include="Content\user\fonts\font-awesome-4.7.0\less\font-awesome.less" />
+    <Content Include="Content\user\fonts\font-awesome-4.7.0\less\icons.less" />
+    <Content Include="Content\user\fonts\font-awesome-4.7.0\less\larger.less" />
+    <Content Include="Content\user\fonts\font-awesome-4.7.0\less\list.less" />
+    <Content Include="Content\user\fonts\font-awesome-4.7.0\less\mixins.less" />
+    <Content Include="Content\user\fonts\font-awesome-4.7.0\less\path.less" />
+    <Content Include="Content\user\fonts\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <Content Include="Content\user\fonts\font-awesome-4.7.0\less\screen-reader.less" />
+    <Content Include="Content\user\fonts\font-awesome-4.7.0\less\stacked.less" />
+    <Content Include="Content\user\fonts\font-awesome-4.7.0\less\variables.less" />
+    <Content Include="Content\user\fonts\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <Content Include="Content\user\fonts\font-awesome-4.7.0\scss\_animated.scss" />
+    <Content Include="Content\user\fonts\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <Content Include="Content\user\fonts\font-awesome-4.7.0\scss\_core.scss" />
+    <Content Include="Content\user\fonts\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <Content Include="Content\user\fonts\font-awesome-4.7.0\scss\_icons.scss" />
+    <Content Include="Content\user\fonts\font-awesome-4.7.0\scss\_larger.scss" />
+    <Content Include="Content\user\fonts\font-awesome-4.7.0\scss\_list.scss" />
+    <Content Include="Content\user\fonts\font-awesome-4.7.0\scss\_mixins.scss" />
+    <Content Include="Content\user\fonts\font-awesome-4.7.0\scss\_path.scss" />
+    <Content Include="Content\user\fonts\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <Content Include="Content\user\fonts\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <Content Include="Content\user\fonts\font-awesome-4.7.0\scss\_stacked.scss" />
+    <Content Include="Content\user\fonts\font-awesome-4.7.0\scss\_variables.scss" />
+    <Content Include="Content\user\fonts\montserrat\Montserrat-Black.ttf" />
+    <Content Include="Content\user\fonts\montserrat\Montserrat-BlackItalic.ttf" />
+    <Content Include="Content\user\fonts\montserrat\Montserrat-Bold.ttf" />
+    <Content Include="Content\user\fonts\montserrat\Montserrat-BoldItalic.ttf" />
+    <Content Include="Content\user\fonts\montserrat\Montserrat-ExtraBold.ttf" />
+    <Content Include="Content\user\fonts\montserrat\Montserrat-ExtraBoldItalic.ttf" />
+    <Content Include="Content\user\fonts\montserrat\Montserrat-ExtraLight.ttf" />
+    <Content Include="Content\user\fonts\montserrat\Montserrat-ExtraLightItalic.ttf" />
+    <Content Include="Content\user\fonts\montserrat\Montserrat-Italic.ttf" />
+    <Content Include="Content\user\fonts\montserrat\Montserrat-Light.ttf" />
+    <Content Include="Content\user\fonts\montserrat\Montserrat-LightItalic.ttf" />
+    <Content Include="Content\user\fonts\montserrat\Montserrat-Medium.ttf" />
+    <Content Include="Content\user\fonts\montserrat\Montserrat-MediumItalic.ttf" />
+    <Content Include="Content\user\fonts\montserrat\Montserrat-Regular.ttf" />
+    <Content Include="Content\user\fonts\montserrat\Montserrat-SemiBold.ttf" />
+    <Content Include="Content\user\fonts\montserrat\Montserrat-SemiBoldItalic.ttf" />
+    <Content Include="Content\user\fonts\montserrat\Montserrat-Thin.ttf" />
+    <Content Include="Content\user\fonts\montserrat\Montserrat-ThinItalic.ttf" />
+    <Content Include="Content\user\fonts\poppins\Poppins-Black.ttf" />
+    <Content Include="Content\user\fonts\poppins\Poppins-BlackItalic.ttf" />
+    <Content Include="Content\user\fonts\poppins\Poppins-Bold.ttf" />
+    <Content Include="Content\user\fonts\poppins\Poppins-BoldItalic.ttf" />
+    <Content Include="Content\user\fonts\poppins\Poppins-ExtraBold.ttf" />
+    <Content Include="Content\user\fonts\poppins\Poppins-ExtraBoldItalic.ttf" />
+    <Content Include="Content\user\fonts\poppins\Poppins-ExtraLight.ttf" />
+    <Content Include="Content\user\fonts\poppins\Poppins-ExtraLightItalic.ttf" />
+    <Content Include="Content\user\fonts\poppins\Poppins-Italic.ttf" />
+    <Content Include="Content\user\fonts\poppins\Poppins-Light.ttf" />
+    <Content Include="Content\user\fonts\poppins\Poppins-LightItalic.ttf" />
+    <Content Include="Content\user\fonts\poppins\Poppins-Medium.ttf" />
+    <Content Include="Content\user\fonts\poppins\Poppins-MediumItalic.ttf" />
+    <Content Include="Content\user\fonts\poppins\Poppins-Regular.ttf" />
+    <Content Include="Content\user\fonts\poppins\Poppins-SemiBold.ttf" />
+    <Content Include="Content\user\fonts\poppins\Poppins-SemiBoldItalic.ttf" />
+    <Content Include="Content\user\fonts\poppins\Poppins-Thin.ttf" />
+    <Content Include="Content\user\fonts\poppins\Poppins-ThinItalic.ttf" />
+    <Content Include="Content\user\vendor\bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="Content\user\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="Content\user\vendor\bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="Content\user\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\user\vendor\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Content\user\vendor\bootstrap\css\bootstrap.min.css.map" />
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -540,26 +625,11 @@
     <EmbeddedResource Include="Migrations\202112111819588_InitialModel.resx">
       <DependentUpon>202112111819588_InitialModel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202112111936519_Modif.resx">
-      <DependentUpon>202112111936519_Modif.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202112231851119_ModifuserModel.resx">
+      <DependentUpon>202112231851119_ModifuserModel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202112112014503_ConstructeurSansParams.resx">
-      <DependentUpon>202112112014503_ConstructeurSansParams.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202112160832374_ModifModels.resx">
-      <DependentUpon>202112160832374_ModifModels.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202112171401225_ModelsNames.resx">
-      <DependentUpon>202112171401225_ModelsNames.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202112171741125_IdQuiz.resx">
-      <DependentUpon>202112171741125_IdQuiz.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202112231553424_Modif1.resx">
-      <DependentUpon>202112231553424_Modif1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202112231706268_ModelUser.resx">
-      <DependentUpon>202112231706268_ModelUser.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202112240958527_ModelUser.resx">
+      <DependentUpon>202112240958527_ModelUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

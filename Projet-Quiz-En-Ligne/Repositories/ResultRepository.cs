@@ -26,9 +26,9 @@ namespace Projet_Quiz_En_Ligne.Repositories
             return context.Resultats.FirstOrDefault(r => r.QuizId == quizId && r.UserId == userId);
         }
 
-        public List<Resultat> FindUserResults( int userId, int quizId)
+        public List<Resultat> FindUserResults( int userId)
         {
-            return context.Resultats.AsNoTracking().Where(r => r.QuizId == quizId && r.UserId == userId).ToList();
+            return context.Resultats.AsNoTracking().Where(r => r.UserId == userId).ToList();
         }
     }
 }

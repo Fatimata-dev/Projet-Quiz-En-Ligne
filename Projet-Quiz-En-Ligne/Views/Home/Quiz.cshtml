@@ -1,33 +1,64 @@
-﻿@model Projet_Quiz_En_Ligne.Models.Question
-@using Projet_Quiz_En_Ligne.Models
-@{
-    ViewBag.Title = "Quiz";
-}
+﻿@model Projet_Quiz_En_Ligne.ViewModel.ListQuizsCategoriesViewModel
+<!DOCTYPE HTML>
+        <html>
+        <head>
+            <title>Phantom by HTML5 UP</title>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+            <link rel="stylesheet" href="~/Content/quiz/css/main.css" />
+            <noscript><link rel="stylesheet" href="~/Content/quiz/css/noscript.css" /></noscript>
+            <link rel="stylesheet" href="~/Content/Site.css"/>
+        </head>
+        <body class="is-preload">
+            <!-- Wrapper -->
+            <div id="wrapper">
 
-<div class="container">
-    <h1>Questionnaire</h1>
-    <br />
+                <!-- Main -->
+                <div id="main">
+                    <div class="inner">
+                        <div class="form-group  mx-auto">
+                            <h3 class="mx-auto">Choisissez un Quiz</h3>
 
-    <h2>Question @Model.NumOrder: @Model.QstText</h2>
+                            <h4>@Html.ActionLink("Toutes les category", "Quiz", null, new { @class = Request["Category"] == null ? "list-group-item active" : "list-group-item" })</h4>
+                            @foreach (var cat in Model.Categories)
+                            {
+                                <h4>@Html.ActionLink(cat.Name, "Quiz", new { Category = cat.Name }, new { @class = Request["Category"] == cat.Name ? "list-group-item active" : "list-group-item" })</h4>
+                            }
 
-    <h3>
-        @using (Html.BeginForm("Next", "Home", FormMethod.Post))
-        {
-            foreach (Reponse rep in Model.Reponses)
-            {
-                if (!Model.IsMultiple)
-                {
-                    @Html.RadioButton("selectedSimpleRep", rep.Id)
-                }
-                else
-                {
-                    <input type="checkbox" name="selectedRep[]" value="@rep.Id" />
-                }
-                @rep.RespText
-                <br />
-            }
-            <input type="submit" value="Suivant" class="btn btn-default" />
-        }
-    </h3>
-</div>
+                        </div>
 
+                        <div>
+
+                      
+                        <section class="tiles">
+                            @foreach (var qz in Model.Quizs)
+                            {
+                                <article class="style1">
+                                    <span class="image">
+                                        <img style="height:300px" src="~/Content/Images/@qz.Image" />
+                                    </span>
+                                    <a href="/Home/Demarrer/@qz.Id">
+                                        <p>@qz.Sujet</p>
+                                        <div class="content">
+                                            <p>Tester vos connaissance en @qz.Sujet</p>
+                                        </div>
+                                    </a>
+                                </article>
+                            }
+
+                        </section>
+                        <br />
+                            <h4>@Html.ActionLink("Retourner à l'accueil", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</h4>
+                        
+
+                    </div>
+                </div>
+
+            </div>
+            <script src="~/Content/quiz/js/jquery.min.js"></script>
+            <script src="~/Content/quiz/js/browser.min.js"></script>
+            <script src="~/Content/quiz/js/breakpoints.min.js"></script>
+            <script src="~/Content/quiz/js/util.js"></script>
+            <script src="~/Content/quiz/js/main.js"></script>
+        </body>
+    </html>

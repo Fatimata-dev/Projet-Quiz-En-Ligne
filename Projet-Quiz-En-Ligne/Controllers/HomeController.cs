@@ -17,7 +17,11 @@ namespace Projet_Quiz_En_Ligne.Controllers
         private QuestionService questionService = new QuestionService(new QuestionRepository(new MyContext()));
         private ResultService result = new ResultService(new ResultRepository(new MyContext()));
         // GET: Home
-        public ActionResult Index(string Category = null)
+        public ActionResult Index()
+        {
+            return View();
+        }
+        public ActionResult Quiz(string Category = null)
         {
             List<Quiz> Quizs;
             List<Category> Categories = categoryService.FindAll();
@@ -47,7 +51,7 @@ namespace Projet_Quiz_En_Ligne.Controllers
             Question qst = service.FindQuestion( id, 1);
 
 
-            return View("Quiz", qst);
+            return View("Demarrer", qst);
         }
         [HttpPost]
         public ActionResult Next(FormCollection form)
@@ -103,7 +107,7 @@ namespace Projet_Quiz_En_Ligne.Controllers
                 order++;
                 Session["order"] = order;
                 Question qst = service.FindQuestion( selectedQuizId ,order);
-                return View("Quiz", qst);
+                return View("Demarrer", qst);
             }
             else
             {

@@ -1,0 +1,74 @@
+﻿@model Projet_Quiz_En_Ligne.Models.Question
+@using Projet_Quiz_En_Ligne.Models
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login V1</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" type="image/png" href="~/Content/User/images/icons/favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="~/Content/User/vendor/bootstrap/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="~/Content/User/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" type="text/css" href="~/Content/User/vendor/animate/animate.css">
+
+    <link rel="stylesheet" type="text/css" href="~/Content/User/vendor/css-hamburgers/hamburgers.min.css">
+
+    <link rel="stylesheet" type="text/css" href="~/Content/User/vendor/select2/select2.min.css">
+
+    <link rel="stylesheet" type="text/css" href="~/Content/User/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/User/css/main.css">
+
+</head>
+
+<body>
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                    <h1>Questionnaire</h1>
+                    <h6>Question @Model.NumOrder: @Model.QstText</h6>
+
+                    <p>
+                        @using (Html.BeginForm("Next", "Home", FormMethod.Post))
+                        {
+                            foreach (Reponse rep in Model.Reponses)
+                            {
+                                if (!Model.IsMultiple)
+                                {
+                                    @Html.RadioButton("selectedSimpleRep", rep.Id)
+                                }
+                                else
+                                {
+                                    <input type="checkbox" name="selectedRep[]" value="@rep.Id" />
+                                }
+                                @rep.RespText
+                                <br />
+                            }
+                            <input type="submit" value="Suivant" class="btn btn-default" />
+                        }
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    
+
+
+    <script src="~/Content/User/vendor/jquery/jquery-3.2.1.min.js"></script>
+
+    <script src="~/Content/User/vendor/bootstrap/js/popper.js"></script>
+    <script src="~/Content/User/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="~/Content/User/vendor/select2/select2.min.js"></script>
+
+    <script src="~/Content/User/vendor/tilt/tilt.jquery.min.js"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+
+    <script src="js/main.js"></script>
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"6c28bce0be5d32c8","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2021.12.0","si":100}' crossorigin="anonymous"></script>
+</body>
+</html>

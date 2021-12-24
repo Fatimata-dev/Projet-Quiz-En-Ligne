@@ -56,7 +56,6 @@ namespace Projet_Quiz_En_Ligne.Controllers
             return View();
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Login(UserResultViewModel user)
         {
             if (user != null)
@@ -64,7 +63,6 @@ namespace Projet_Quiz_En_Ligne.Controllers
                 if (user.IsAdmin)
                 {
                     Session["Admin"] = user;
-                    //Session["AdminName"] = user.Name.ToString();
                     return RedirectToAction("Index", "Admin");
                 }
                 else

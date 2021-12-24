@@ -31,44 +31,58 @@
                 <div class="login100-pic js-tilt" data-tilt>
                     <img src="~/Content/User/images/img-01.png" alt="IMG">
                 </div>
-                @using (Html.BeginForm())
-                {
-                    @Html.AntiForgeryToken()
-                    <form class="login100-form validate-form" method="post">
-                        <span class="login100-form-title">
-                            Connexion
-                        </span>
-                        @Html.ValidationMessageFor(m => m.Email)
-                        <div class="wrap-input100 validate-input" data-validate="format email invalid">
-                            <input class="input100" type="text" name="email" placeholder="Email">
-                            <span class="focus-input100"></span>
-                            <span class="symbol-input100">
-                                <i class="fa fa-envelope" aria-hidden="true"></i>
-                            </span>
-                        </div>
-                        @Html.ValidationMessageFor(m => m.Password)
-                        <div class="wrap-input100 validate-input" data-validate="Mot de passe obligatoire">
-                            <input class="input100" type="password" name="pass" placeholder="Password">
-                            <span class="focus-input100"></span>
-                            <span class="symbol-input100">
-                                <i class="fa fa-lock" aria-hidden="true"></i>
-                            </span>
-                        </div>
-                        <div class="container-login100-form-btn">
-                            <button class="login100-form-btn" type="submit">
-                                Connexion
-                            </button>
-                        </div>
-                        <div class="text-center p-t-136">
-                            <a class="txt2" href="~/Views/Admin/Signup.cshtml">
-                                Je n'ai pas decompte
-                                <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </form>
-                }
+            <form class="login100-form validate-form" method="post">
+                <span class="login100-form-title">
+                    Connexion
+                </span>
+                @Html.ValidationMessageFor(m => m.Name)
+                <div class="wrap-input100 validate-input" data-validate="format email invalid">
+                    <input class="input100" type="text" name="Name" placeholder="Name">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                    </span>
                 </div>
+                @Html.ValidationMessageFor(m => m.Email)
+                <div class="wrap-input100 validate-input" data-validate="format email invalid">
+                    <input class="input100" type="text" name="email" placeholder="Email">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                    </span>
+                </div>
+                @Html.ValidationMessageFor(m => m.Password)
+                <div class="wrap-input100 validate-input" data-validate="Mot de passe obligatoire">
+                    <input class="input100" type="password" name="pass" placeholder="Password">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+                        <i class="fa fa-lock" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <div class="container-login100-form-btn">
+                    <button class="login100-form-btn" type="submit">
+                        Connexion
+                    </button>
+                </div>
+                <div class="text-center p-t-136">
+                    <a class="txt2">
+                        @Html.ActionLink("Je n'ai pas de compte", "Signup", "Admin", new { area = "" }, new { @class = "navbar-brand" })
+                        <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                    </a>
+                </div>
+
+                <div class="ontainer-login100-form-btn">
+                    <button class="login100-form-btn">
+                        @Html.ActionLink("Accueil", "Index")
+                    </button>
+                </div>
+            </form>
+
+            </div>
+
+
         </div>
+       
     </div>
     <script src="~/Content/User/vendor/jquery/jquery-3.2.1.min.js"></script>
 
@@ -89,6 +103,3 @@
 
 
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

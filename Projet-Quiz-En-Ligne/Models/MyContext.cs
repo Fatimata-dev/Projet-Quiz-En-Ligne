@@ -17,6 +17,8 @@ namespace Projet_Quiz_En_Ligne.Models
         public  DbSet<Category> Categories { get; set; }
         public  DbSet<Resultat> Resultats { get; set; }
         public  DbSet<User> Users { get; set; }
+
+        public System.Data.Entity.DbSet<Projet_Quiz_En_Ligne.ViewModel.UserResultViewModel> UserResultViewModels { get; set; }
     }
 
 }

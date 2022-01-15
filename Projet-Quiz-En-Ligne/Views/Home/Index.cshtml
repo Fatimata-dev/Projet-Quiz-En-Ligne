@@ -23,24 +23,26 @@
                 <ul class="navbar-header" style="float:right !important">
                     @Html.ActionLink("Accueil", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
 
-                    @if (Session["User"] != null || Session["Admin"] != null)
+                    @if (Session["User"] != null)
                     {
                         UserResultViewModel us = new UserResultViewModel();
                         us = (UserResultViewModel)Session["User"];
-                        <li><p style="color:red; margin-top:15px;">Hello @us.Name</p></li>
+                        <li><p margin-top:15px;">Hello @us.Name</p></li>
                         @Html.ActionLink("Deconnexion", "Logout", "Admin", new { area = "" }, new { @class = "navbar-brand" })
+                        @*@Html.ActionLink("Admin", "Index", "Admin", new { area = "" }, new { @class = "navbar-brand" })*@
+                        if(us.IsAdmin)
+                        {
+                            @Html.ActionLink("Admin", "Index", "Admin", new { area = "" }, new { @class = "navbar-brand" })
+                        }
                     }
                     else
                     {
                         @Html.ActionLink("Connexion", "Login", "Admin", new { area = "" }, new { @class = "navbar-brand" })
                         @Html.ActionLink("Inscription", "Signup", "Admin", new { area = "" }, new { @class = "navbar-brand" })
-                    }
-                    @if (Session["Admin"] != null)
-                    {
-                        @Html.ActionLink("Admin", "Index", "Admin", new { area = "" }, new { @class = "navbar-brand" })
 
                     }
-                    @Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+                    @Html.ActionLink("Contact", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
                     @Html.ActionLink("Commencer un quiz", "Quiz", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 </ul>
             </nav>
@@ -59,7 +61,7 @@
                     <strong>HTML_CSS_JS_C#</strong>
                 </p>
                 <ul class="actions">
-                    <li><a href="#one" class="button scrolly">Commencer le quiz</a></li>
+                    <li><a href="Quiz/Home" class="button scrolly">Commencer le quiz</a></li>
                 </ul>
             </div>
         </section>

@@ -60,26 +60,16 @@ namespace Projet_Quiz_En_Ligne.Controllers
         {
             if (user != null)
             {
-                if (user.IsAdmin)
-                {
-                    Session["Admin"] = user;
-                    return RedirectToAction("Index", "Admin");
-                }
-                else
-                {
                     Session["User"] = user;
-                    //Session["UserName"] = user.Name.ToString();
                     return RedirectToAction("Index", "Home");
-                }
-
-
             }
             else
             {
-
                 ViewBag.Notification = "Mauvais nom d utilisateur ou mdp";
             }
             return View();
         }
+
+       
     }
 }

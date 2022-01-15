@@ -77,24 +77,24 @@ namespace Projet_Quiz_En_Ligne.Controllers
         }
 
         // GET: QuizCategories/Delete/5
-        public ActionResult Delete(int id)
-        {
-            Category quizCategory = categoryService.FindById(id);
-            if (quizCategory == null)
-            {
-                return HttpNotFound();
-            }
-            return View(quizCategory);
-        }
+        //public ActionResult Delete(int id)
+        //{
+        //    Category quizCategory = categoryService.FindById(id);
+        //    if (quizCategory == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(quizCategory);
+        //}
 
-        // POST: QuizCategories/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            categoryService.DeleteById(id);
-            return RedirectToAction("Index");
-        }
+        //// POST: QuizCategories/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //    categoryService.DeleteById(id);
+        //    return RedirectToAction("Index");
+        //}
 
     }
 }

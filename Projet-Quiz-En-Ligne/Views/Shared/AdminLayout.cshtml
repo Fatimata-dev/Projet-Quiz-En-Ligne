@@ -1,4 +1,12 @@
-﻿
+﻿@using Projet_Quiz_En_Ligne.ViewModel;
+@{
+
+    UserResultViewModel us = new UserResultViewModel();
+    if (Session["User"] != null)
+    {
+        us = (UserResultViewModel)Session["User"];
+    }
+}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,9 +51,9 @@
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
-                        <a class="logo" href="index.html">
-                            <img src="images/icon/logo.png" alt="CoolAdmin" />
-                        </a>
+                        @*<a class="logo" href="index.html">
+                                <img src="images/icon/logo.png" alt="CoolAdmin" />
+                            </a>*@
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
                                 <span class="hamburger-inner"></span>
@@ -60,7 +68,10 @@
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
                 <a href="#">
-                    <img src="images/icon/logo.png" alt="Cool Admin" />
+                    <li>
+                        @Html.ActionLink("Acceuil  ", "Index", "Home")
+                    </li>
+                    @*<img src="images/icon/logo.png" alt="Cool Admin" />*@
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
@@ -71,6 +82,7 @@
                                 <i class="fas fa-tachometer-alt"></i>Acceuil Admin
                             </a>
                         </li>
+
                         <li>
                             @Html.ActionLink("Quizs", "Index", "Quizs")
                         </li>
@@ -100,30 +112,23 @@
                             <div class="account-wrap">
                                 <div class="account-item clearfix js-item-menu">
                                     <div class="image">
-                                        <img src="images/icon/avatar-01.jpg" alt="Fatimata" />
-                                    </div>
-                                    <div class="content">
-                                        <a class="js-acc-btn" href="#">Fatimata</a>
+                                        <a class="js-acc-btn" href="#">@us.Name</a>
                                     </div>
                                     <div class="account-dropdown js-dropdown">
                                         <div class="info clearfix">
                                             <div class="content">
-                                                <h5 class="name">
-                                                    <a href="#">Fatimata</a>
+                                               <h5 class="name">
+                                                    <a href="#">@us.Name</a>
                                                 </h5>
-                                                <span class="email">exemple@example.com</span>
-                                            </div>
-                                        </div>
-                                        <div class="account-dropdown__body">
-                                            <div class="account-dropdown__item">
-                                                <a href="#">
-                                                    <i class="zmdi zmdi-account"></i>Mon Compte
-                                                </a>
+                                                <span class="email">@us.Email</span>
                                             </div>
                                         </div>
                                         <div class="account-dropdown__footer">
                                             <a href="#">
-                                                <i class="zmdi zmdi-power"></i>Deconnexion
+                                                @Html.ActionLink("Parametres du compte", "Edit", "Admin")
+                                            </a>
+                                            <a href="#">
+                                                @Html.ActionLink("Déconnexion", "Logout", "Admin")
                                             </a>
                                         </div>
                                     </div>
@@ -133,9 +138,7 @@
                     </div>
                 </div>
             </header>
-            @*</div>*@
-            @*<div class="page-container ">*@
-                @RenderBody()
+            @RenderBody()
             @*</div>*@
 
             <!-- Jquery JS-->
@@ -162,6 +165,8 @@
             <!-- Main JS-->
             <script src="~/Content/Admin/js/main.js"></script>
         </div>
-        </div>
+    </div>
 </body>
 </html>
+
+

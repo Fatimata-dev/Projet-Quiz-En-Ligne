@@ -394,6 +394,10 @@
     <Compile Include="Migrations\202112240958527_ModelUser.Designer.cs">
       <DependentUpon>202112240958527_ModelUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202201152029264_User.cs" />
+    <Compile Include="Migrations\202201152029264_User.Designer.cs">
+      <DependentUpon>202201152029264_User.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\MyContext.cs" />
     <Compile Include="Models\Quiz.cs" />
@@ -728,6 +732,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202112240958527_ModelUser.resx">
       <DependentUpon>202112240958527_ModelUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201152029264_User.resx">
+      <DependentUpon>202201152029264_User.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
